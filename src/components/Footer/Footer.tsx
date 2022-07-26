@@ -1,45 +1,45 @@
 import styled from "styled-components";
-import {HeaderLink} from "./HeaderLink";
 
 const Container = styled.header`
     height: 116px;
-    border-bottom: #181818 solid 2px;
+	background: #181818;
     padding: 20px;
     display: flex;
     justify-content: start;
     align-items: center;
     column-gap: 20px;
+	margin-top: auto;
 `
 const Logo = styled.div`
     width: 42px;
     height: 42px;
-    background: #181818;
+    background: white;
     border-radius: 50%;
 `
-const Slogan = styled.div`
+const Text = styled.div<{last?: boolean}>`
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.03em;
-    color: #181818;
-    margin-right: auto;
+    color: white;
+	
+	${props => props.last && `
+		margin-left: auto;	
+	`}
 `
 
-export const Header = () => {
+export const Footer = () => {
 	return (
 		<Container>
 			<Logo/>
-			<Slogan>
-				ДИЗАЙН КРУГОМ
-			</Slogan>
-			<HeaderLink href={"http://kodim.studio"}>
-				ЗАКАЗАТЬ САЙТ У СТУДИИ ПОД КЛЮЧ
-			</HeaderLink>
-			<HeaderLink href={"https://t.me/starostakirill"}>
-				НАПИСАТЬ МНЕ
-			</HeaderLink>
+			<Text>
+				КРУГОМ ДИЗАЙН
+			</Text>
+			<Text last={true}>
+				2022
+			</Text>
 		</Container>
 	)
 }

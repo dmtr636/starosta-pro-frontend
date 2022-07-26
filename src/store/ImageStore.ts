@@ -14,9 +14,16 @@ class ImageStore {
 		axios.get(SERVER_HOST + "/api/images")
 			.then((res) => {
 				this.images = res.data.result
-				console.log(res.data.result)
 			}
 		)
+	}
+
+	filterImages(categoryId?: number) {
+		if (categoryId) {
+			return this.images.filter(image => image.category_id === categoryId)
+		} else {
+			return this.images
+		}
 	}
 }
 

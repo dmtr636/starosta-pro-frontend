@@ -1,20 +1,35 @@
 import React, {useEffect} from 'react';
-import {Header} from "./components/header/Header";
-import {Nav} from "./components/nav/Nav";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {imageStore} from "./store/ImageStore";
 import {Images} from "./components/images/Images";
+import {categoryStore} from "./store/CategoryStore";
+import {observer} from "mobx-react-lite";
+import {Page404} from "./pages/Page404";
+import {MainPage} from "./pages/MainPage";
 
-export const App = () => {
+export const App = observer(() => {
 	useEffect(() => {
+		categoryStore.fetchCategories()
 		imageStore.fetchImages()
 	}, [])
 
 	return (
 		<BrowserRouter>
-			<Header/>
-			<Nav/>
-			<Images/>
+			<Routes>
+				<Route path={'/'} element={<MainPage/>}>
+					<Route index element={<Images/>}/>
+					{categoryStore.categories.map(category =>
+						<Route
+							path={`/${category.path}`}
+							element={<Images categoryId={category.id}/>}
+						/>
+					)}
+				</Route>
+				{categoryStore.categories.length === 0 &&
+                    <Route path={"*"} element={<MainPage/>}/>
+				}
+				<Route path={"*"} element={<Page404/>}/>
+			</Routes>
 		</BrowserRouter>
 	)
-}
+})

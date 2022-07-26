@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {ReactNode} from "react";
 
-const Button = styled.button`
+const Link = styled.a`
 	height: 42px;
 	display: flex;
 	justify-content: center;
@@ -22,10 +22,10 @@ const Button = styled.button`
 	}
 `
 
-export const HeaderButton = (props: {children: ReactNode}) => {
+export const HeaderLink = (props: {children: ReactNode, href: string}) => {
 	return (
-		<Button>
+		<Link href={props.href} target="_blank">
 			{props.children}
-		</Button>
+		</Link>
 	)
 }
