@@ -13,7 +13,6 @@ const Container = styled.div`
 `
 
 export const MainPage = () => {
-
 	return (
 		<Container>
 			<Header/>

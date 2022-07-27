@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {useState} from "react";
+import {media} from "../../constants/breakpoints";
 
 const Container = styled.div`
     position: fixed;
@@ -11,6 +12,16 @@ const Container = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	column-gap: 20px;
+	
+	${media.phone} {
+        height: auto;
+		flex-direction: column;
+		justify-content: start;
+		align-items: start;
+		row-gap: 20px;
+		padding: 20px 20px 37px 20px;
+	}
 `
 const Text = styled.div`
     font-family: 'Montserrat';
@@ -36,9 +47,11 @@ const Button = styled.button`
 	align-items: center;
 	height: 42px;
 	
-	&:hover {
-		background: #181818;
-		color: white;
+	@media (hover: hover) {
+        &:hover {
+            background: #181818;
+            color: white;
+        }
 	}
 `
 

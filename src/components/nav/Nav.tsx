@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import {categoryStore} from "../../store/CategoryStore";
 import {observer} from "mobx-react-lite";
+import {media} from "../../constants/breakpoints";
 
 const Container = styled.nav`
     display: flex;
@@ -9,6 +10,19 @@ const Container = styled.nav`
     align-items: center;
     padding: 0 20px;
     margin-top: 37px;
+	
+	&::-webkit-scrollbar {
+		display: none;
+	}
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    ${media.tablet} {
+        overflow: auto;
+    }
+    ${media.phone} {
+        column-gap: 17px;
+    }
 `
 const Link = styled.div<{ active: boolean }>`
     background: ${props => props.active ? '#181818' : '#FFFFFF'};
@@ -24,7 +38,8 @@ const Link = styled.div<{ active: boolean }>`
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.07em;
-
+	white-space: nowrap;
+	
     ${props => !props.active && `
 		&:hover {
 			background: rgba(24, 24, 24, 0.04);

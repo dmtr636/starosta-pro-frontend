@@ -9,6 +9,7 @@ button {
   outline: none;
   background: none;
   cursor: pointer;
+  line-height: 0;
 }
 
 a {

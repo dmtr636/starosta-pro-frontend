@@ -15,11 +15,13 @@ const Link = styled.a`
     line-height: 22px;
     letter-spacing: 0.03em;
     color: #FFFFFF;
-	
-	&:hover {
-        background: rgba(24, 24, 24, 0.04);
-		color: #181818;
-	}
+
+    @media (hover: hover) {
+        &:hover {
+            background: rgba(24, 24, 24, 0.04);
+            color: #181818;
+        }
+    }
 `
 
 export const HeaderLink = (props: {children: ReactNode, href: string}) => {

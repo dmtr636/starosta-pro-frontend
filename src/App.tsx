@@ -22,6 +22,7 @@ export const App = observer(() => {
 						<Route
 							path={`/${category.path}`}
 							element={<Images categoryId={category.id}/>}
+							key={category.path}
 						/>
 					)}
 				</Route>

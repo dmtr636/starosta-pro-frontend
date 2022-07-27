@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import {HeaderLink} from "./HeaderLink";
+import useWindowDimensions from "../../hooks/hooks";
+import {device} from "../../constants/breakpoints";
+import {HeaderBurger} from "./HeaderBurger";
+import {useState} from "react";
+import {HeaderMenu} from "./HeaderMenu";
 
 const Container = styled.header`
     height: 116px;
@@ -28,18 +33,49 @@ const Slogan = styled.div`
 `
 
 export const Header = () => {
+	const {width} = useWindowDimensions()
+	const [showMenu, setShowMenu] = useState(false)
+
+	const onBurgerClick = () => {
+		setShowMenu(true)
+		document.body.style.overflow = "hidden"
+	}
+	const onClickOutsideMenu = () => {
+		setShowMenu(false)
+		document.body.style.overflow = ""
+	}
+	const Links = () => {
+		return (
+			<>
+				<HeaderLink href={"http://kodim.studio"}>
+					ЗАКАЗАТЬ САЙТ У СТУДИИ ПОД КЛЮЧ
+				</HeaderLink>
+				<HeaderLink href={"https://t.me/starostakirill"}>
+					НАПИСАТЬ МНЕ
+				</HeaderLink>
+			</>
+		)
+	}
+
 	return (
 		<Container>
 			<Logo/>
 			<Slogan>
 				ДИЗАЙН КРУГОМ
 			</Slogan>
-			<HeaderLink href={"http://kodim.studio"}>
-				ЗАКАЗАТЬ САЙТ У СТУДИИ ПОД КЛЮЧ
-			</HeaderLink>
-			<HeaderLink href={"https://t.me/starostakirill"}>
-				НАПИСАТЬ МНЕ
-			</HeaderLink>
+			{width >= device.desktop
+				?
+				<Links/>
+				:
+				<>
+					<HeaderBurger onClick={onBurgerClick}/>
+					{showMenu &&
+                        <HeaderMenu onClickOutside={onClickOutsideMenu}>
+                            <Links/>
+                        </HeaderMenu>
+					}
+				</>
+			}
 		</Container>
 	)
 }
