@@ -2,6 +2,7 @@ import {IImage} from "../interfaces/IImage";
 import {makeAutoObservable} from "mobx";
 import axios from "axios";
 import {SERVER_HOST} from "../constants/config";
+import {swiperStore} from "./SwiperStore";
 
 class ImageStore {
 	images: IImage[] = []
@@ -14,6 +15,7 @@ class ImageStore {
 		axios.get(SERVER_HOST + "/api/images")
 			.then((res) => {
 				this.images = res.data.result
+				swiperStore.swiper?.slideTo(swiperStore.swiper?.activeIndex)
 			}
 		)
 	}

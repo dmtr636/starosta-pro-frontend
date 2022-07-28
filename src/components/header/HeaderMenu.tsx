@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {ReactNode} from "react";
+import {media} from "../../constants/breakpoints";
 
 const Background = styled.div`
 	position: fixed;
@@ -22,6 +23,13 @@ const Container = styled.div`
 	align-items: start;
 	row-gap: 20px;
 	padding: 0 20px;
+	
+	${media.phone} {
+		width: auto;
+		left: 39px;
+		padding: 37px 20px;
+		height: auto;
+	}
 `
 
 export const HeaderMenu = (props: {onClickOutside: () => void; children: ReactNode}) => {

@@ -2,12 +2,11 @@ import styled from "styled-components";
 import {ReactNode} from "react";
 
 const Link = styled.a`
-	height: 42px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: #181818;
-	padding: 0 20px;
+	padding: 10px 20px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;

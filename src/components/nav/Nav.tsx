@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {categoryStore} from "../../store/CategoryStore";
 import {observer} from "mobx-react-lite";
 import {media} from "../../constants/breakpoints";
+import {useEffect, useRef} from "react";
+import {ICategory} from "../../interfaces/ICategory";
 
 const Container = styled.nav`
     display: flex;
@@ -40,21 +42,39 @@ const Link = styled.div<{ active: boolean }>`
     letter-spacing: 0.07em;
 	white-space: nowrap;
 	
-    ${props => !props.active && `
-		&:hover {
-			background: rgba(24, 24, 24, 0.04);
-			color: #181818;
-		}
-	`}
+	@media (hover: hover) {
+        ${props => !props.active && `
+			&:hover {
+				background: rgba(24, 24, 24, 0.04);
+				color: #181818;
+			}
+		`}
+	}
 `
 
 export const Nav = observer(() => {
+	const ref = useRef(null)
+	const location = useLocation()
+
+	useEffect(() => {
+		setTimeout(() => {
+			// @ts-ignore
+			ref.current!.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+		}, 50)
+	}, [location])
+
 	return (
 		<Container>
 			{categoryStore.categories.map(category =>
-				<NavLink to={`/${category.path}`} key={category.path}>
+				<NavLink
+					to={`/${category.path}`}
+					key={category.path}
+				>
 					{({isActive}) => (
-						<Link active={isActive}>
+						<Link
+							active={isActive}
+							ref={isActive ? ref : null}
+						>
 							{category.name}
 						</Link>
 					)}

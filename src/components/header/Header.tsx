@@ -3,8 +3,9 @@ import {HeaderLink} from "./HeaderLink";
 import useWindowDimensions from "../../hooks/hooks";
 import {device} from "../../constants/breakpoints";
 import {HeaderBurger} from "./HeaderBurger";
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {HeaderMenu} from "./HeaderMenu";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 const Container = styled.header`
     height: 116px;
@@ -35,6 +36,12 @@ const Slogan = styled.div`
 export const Header = () => {
 	const {width} = useWindowDimensions()
 	const [showMenu, setShowMenu] = useState(false)
+
+	useEffect(() => {
+		if (width >= device.desktop) {
+			document.body.style.overflow = ""
+		}
+	}, [width])
 
 	const onBurgerClick = () => {
 		setShowMenu(true)

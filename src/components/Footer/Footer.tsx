@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.header`
+const Container = styled.footer`
     height: 116px;
 	background: #181818;
     padding: 20px;
