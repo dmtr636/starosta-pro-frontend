@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/starosta-pro-frontend/static/css/main.f54273d0.css",
+    "main.js": "/starosta-pro-frontend/static/js/main.e76f3709.js",
+    "index.html": "/starosta-pro-frontend/index.html",
+    "static/media/Telegram.svg": "/starosta-pro-frontend/static/media/Telegram.84609ad1988c9a9d4f16cc44549c7910.svg",
+    "static/media/Mail.svg": "/starosta-pro-frontend/static/media/Mail.ca2f8d1a1e708de825a801128438fc6c.svg",
+    "main.f54273d0.css.map": "/starosta-pro-frontend/static/css/main.f54273d0.css.map",
+    "main.e76f3709.js.map": "/starosta-pro-frontend/static/js/main.e76f3709.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f54273d0.css",
+    "static/js/main.e76f3709.js"
+  ]
+}
