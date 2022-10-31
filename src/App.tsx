@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter, Route, Routes, useLocation, useMatch, useRoutes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {imageStore} from "./store/ImageStore";
-import {Images} from "./components/images/Images";
+import {ImagesGrid} from "./components/images/ImagesGrid";
 import {categoryStore} from "./store/CategoryStore";
 import {observer} from "mobx-react-lite";
 import {Page404} from "./pages/Page404";
@@ -25,16 +25,16 @@ export const App = observer(() => {
 					{width <= device.tablet
 						?
 						<>
-							<Route index element={<ImagesSwiper />} />
-							<Route path={"*"} element={<ImagesSwiper />} />
+							<Route index element={<ImagesSwiper/>}/>
+							<Route path={"*"} element={<ImagesSwiper/>}/>
 						</>
 						:
 						<>
-							<Route index element={<Images/>}/>
+							<Route index element={<ImagesGrid/>}/>
 							{categoryStore.categories.map(category =>
 								<Route
 									path={`/${category.path}`}
-									element={<Images categoryId={category.id}/>}
+									element={<ImagesGrid categoryId={category.id}/>}
 									key={category.path}
 								/>
 							)}

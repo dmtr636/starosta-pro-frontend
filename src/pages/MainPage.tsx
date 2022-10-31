@@ -10,6 +10,8 @@ const Container = styled.div`
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	background: #111111;
+	padding: 0 20px;
 `
 
 export const MainPage = () => {

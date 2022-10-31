@@ -3,5 +3,7 @@ export interface IImage {
 	url: string,
 	width: number,
 	position?: number,
-	category_id?: number
+	category_id?: number,
+	additional_images: string[],
+	currentIndex?: number
 }

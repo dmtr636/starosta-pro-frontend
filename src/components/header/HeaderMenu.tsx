@@ -9,6 +9,7 @@ const Background = styled.div`
 	width: 100%;
 	height: 100%;
     background: rgba(24, 24, 24, 0.7);
+	z-index: 10;
 `
 const Container = styled.div`
     width: 473px;

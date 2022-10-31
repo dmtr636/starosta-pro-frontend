@@ -1,45 +1,24 @@
 import styled from "styled-components";
 
 const Container = styled.footer`
-    height: 116px;
-	background: #181818;
-    padding: 20px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    column-gap: 20px;
+    padding: 33px;
 	margin-top: auto;
-`
-const Logo = styled.div`
-    width: 42px;
-    height: 42px;
-    background: white;
-    border-radius: 50%;
-`
-const Text = styled.div<{last?: boolean}>`
-    font-family: 'Montserrat';
+	display: flex;
+	justify-content: center;
+    font-family: 'Oswald';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 23px;
+    line-height: 34px;
     letter-spacing: 0.03em;
-    color: white;
-	
-	${props => props.last && `
-		margin-left: auto;	
-	`}
+    text-transform: uppercase;
+    color: #FFFFFF;
 `
 
 export const Footer = () => {
 	return (
 		<Container>
-			<Logo/>
-			<Text>
-				КРУГОМ ДИЗАЙН
-			</Text>
-			<Text last={true}>
-				2022
-			</Text>
+			2022
 		</Container>
 	)
 }

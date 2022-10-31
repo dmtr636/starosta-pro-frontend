@@ -1,36 +1,41 @@
 import styled from "styled-components";
-import {HeaderLink} from "./HeaderLink";
 import useWindowDimensions from "../../hooks/hooks";
 import {device} from "../../constants/breakpoints";
-import {HeaderBurger} from "./HeaderBurger";
 import React, {useEffect, useState} from "react";
-import {HeaderMenu} from "./HeaderMenu";
-import {Swiper, SwiperSlide} from "swiper/react";
+import mail from "../../assets/Mail.svg"
+import telegram from "../../assets/Telegram.svg"
 
 const Container = styled.header`
-    height: 116px;
-    border-bottom: #181818 solid 2px;
-    padding: 20px;
+    height: 103px;
+    border-bottom: 3px solid #FFFFFF;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    column-gap: 20px;
+	position: relative;
 `
-const Logo = styled.div`
-    width: 42px;
-    height: 42px;
-    background: #181818;
-    border-radius: 50%;
-`
-const Slogan = styled.div`
-    font-family: 'Montserrat';
+const Title = styled.div`
+    font-family: 'Oswald';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #181818;
-    margin-right: auto;
+    font-size: 23px;
+    line-height: 34px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+`
+const Links = styled.div`
+	position: absolute;
+	right: 0;
+	display: flex;
+	column-gap: 30px;
+	margin-left: auto;
+`
+const Link = styled.a`
+	opacity: 0.7;
+	
+	&:hover {
+		opacity: 1;
+	}
 `
 
 export const Header = () => {
@@ -51,38 +56,18 @@ export const Header = () => {
 		setShowMenu(false)
 		document.body.style.overflow = ""
 	}
-	const Links = () => {
-		return (
-			<>
-				<HeaderLink href={"http://kodim.studio"}>
-					ЗАКАЗАТЬ САЙТ У СТУДИИ ПОД КЛЮЧ
-				</HeaderLink>
-				<HeaderLink href={"https://t.me/starostakirill"}>
-					НАПИСАТЬ МНЕ
-				</HeaderLink>
-			</>
-		)
-	}
 
 	return (
 		<Container>
-			<Logo/>
-			<Slogan>
-				ДИЗАЙН КРУГОМ
-			</Slogan>
-			{width >= device.desktop
-				?
-				<Links/>
-				:
-				<>
-					<HeaderBurger onClick={onBurgerClick}/>
-					{showMenu &&
-                        <HeaderMenu onClickOutside={onClickOutsideMenu}>
-                            <Links/>
-                        </HeaderMenu>
-					}
-				</>
-			}
+			<Title>STAROSTA KIRILL</Title>
+			<Links>
+				<Link href={"mailto:starosta-2000@mail.ru"} target={"_blank"}>
+					<img src={mail} alt={""}/>
+				</Link>
+				<Link href={"https://t.me/starostakirill"} target={"_blank"}>
+					<img src={telegram} alt={""}/>
+				</Link>
+			</Links>
 		</Container>
 	)
 }

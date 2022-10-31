@@ -5,10 +5,9 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {categoryStore} from "../../store/CategoryStore";
 import React, {useEffect} from "react";
 import {observer} from "mobx-react-lite";
-import {Images} from "./Images";
+import {ImagesGrid} from "./ImagesGrid";
 import "swiper/css";
 import "swiper/css/bundle";
-import {imageStore} from "../../store/ImageStore";
 
 export const ImagesSwiper = observer(() => {
 	const navigate = useNavigate()
@@ -44,7 +43,7 @@ export const ImagesSwiper = observer(() => {
 			>
 				{categoryStore.categories.map((category, index) =>
 					<SwiperSlide key={index} style={{minHeight: "calc(100vh - 315px)"}}>
-						<Images categoryId={category.id} />
+						<ImagesGrid categoryId={category.id} />
 					</SwiperSlide>
 				)}
 			</Swiper>

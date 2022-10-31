@@ -22,7 +22,6 @@ class CategoryStore {
 		axios.get(SERVER_HOST + "/api/categories")
 			.then(res => {
 				this.categories = [defaultCategory, ...res.data.result]
-				swiperStore.swiper?.slideTo(swiperStore.swiper?.activeIndex)
 			})
 	}
 }
