@@ -4,6 +4,8 @@ import {device} from "../../constants/breakpoints";
 import React, {useEffect, useState} from "react";
 import mail from "../../assets/Mail.svg"
 import telegram from "../../assets/Telegram.svg"
+import back from "../../assets/Back.svg"
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Container = styled.header`
     height: 103px;
@@ -22,15 +24,27 @@ const Title = styled.div`
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #FFFFFF;
+	cursor: pointer;
 `
 const Links = styled.div`
 	position: absolute;
 	right: 0;
 	display: flex;
 	column-gap: 30px;
-	margin-left: auto;
 `
 const Link = styled.a`
+	opacity: 0.7;
+	
+	&:hover {
+		opacity: 1;
+	}
+`
+const BackButton = styled.button`
+	position: absolute;
+	left: 0;
+    width: 18px;
+    height: 16px;
+	background: url(${back});
 	opacity: 0.7;
 	
 	&:hover {
@@ -41,6 +55,8 @@ const Link = styled.a`
 export const Header = () => {
 	const {width} = useWindowDimensions()
 	const [showMenu, setShowMenu] = useState(false)
+	const navigate = useNavigate()
+	const location = useLocation()
 
 	useEffect(() => {
 		if (width >= device.desktop) {
@@ -59,7 +75,10 @@ export const Header = () => {
 
 	return (
 		<Container>
-			<Title>STAROSTA KIRILL</Title>
+			{location.pathname !== "/" &&
+                <BackButton onClick={() => navigate("/")}/>
+			}
+			<Title onClick={() => navigate("/")}>STAROSTA KIRILL</Title>
 			<Links>
 				<Link href={"mailto:starosta-2000@mail.ru"} target={"_blank"}>
 					<img src={mail} alt={""}/>

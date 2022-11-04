@@ -5,11 +5,11 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {categoryStore} from "../../store/CategoryStore";
 import React, {useEffect} from "react";
 import {observer} from "mobx-react-lite";
-import {ImagesGrid} from "./ImagesGrid";
+import {ProjectsGrid} from "./ProjectsGrid";
 import "swiper/css";
 import "swiper/css/bundle";
 
-export const ImagesSwiper = observer(() => {
+export const ImagesSwiper = observer((props: {projectId?: number}) => {
 	const navigate = useNavigate()
 	const location = useLocation()
 
@@ -43,7 +43,7 @@ export const ImagesSwiper = observer(() => {
 			>
 				{categoryStore.categories.map((category, index) =>
 					<SwiperSlide key={index} style={{minHeight: "calc(100vh - 315px)"}}>
-						<ImagesGrid categoryId={category.id} />
+						<ProjectsGrid/>
 					</SwiperSlide>
 				)}
 			</Swiper>

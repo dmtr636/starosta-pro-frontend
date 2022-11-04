@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import {observer} from "mobx-react-lite"
-import {imageStore} from "../../store/ImageStore";
+import {projectStore} from "../../store/ProjectStore";
 import {SERVER_HOST} from "../../constants/config";
 import {device, media} from "../../constants/breakpoints";
 import useWindowDimensions from "../../hooks/hooks";
-import {Image} from "./Image";
+import {Project} from "./Project";
+import {categoryStore} from "../../store/CategoryStore";
+import {IProject} from "../../interfaces/IProject";
 
 const Container = styled.div`
 	display: grid;
@@ -20,21 +22,21 @@ const Container = styled.div`
 	}
 `
 
-export const ImagesGrid = observer((props: {categoryId?: number}) => {
-	let images = imageStore.filterImages(props.categoryId)
-
+export const ProjectsGrid = observer(() => {
+	const categoryId = categoryStore.currentCategory.id
+	let projects = projectStore.getProjects(categoryId)
 	const {width} = useWindowDimensions()
 
 	if (width < device.tablet) {
-		images = imageStore.adaptImagesTo2Col(images)
+		projects = projectStore.adaptImagesTo2Col(projects) as IProject[]
 	} else if (width < device.desktop) {
-		images = imageStore.adaptImagesTo3Col(images)
+		projects = projectStore.adaptImagesTo3Col(projects) as IProject[]
 	}
 
 	return (
 		<Container>
-			{images.map(image =>
-				<Image image={image}/>
+			{projects.map(project =>
+				<Project project={project}/>
 			)}
 		</Container>
 	)

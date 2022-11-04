@@ -1,9 +1,10 @@
-import {IImage} from "../../interfaces/IImage";
+import {IProject} from "../../interfaces/IProject";
 import {SERVER_HOST} from "../../constants/config";
 import styled from "styled-components";
 import {media} from "../../constants/breakpoints";
-import {imageStore} from "../../store/ImageStore";
+import {projectStore} from "../../store/ProjectStore";
 import {observer} from "mobx-react-lite";
+import {useNavigate} from "react-router-dom";
 
 const Container = styled.div<{width: number}>`
 	position: relative;
@@ -73,23 +74,20 @@ const ProjectYear = styled.div`
     color: #111111;
 `
 
-export const Image = observer((props: {image: IImage}) => {
+export const Project = observer((props: {project: IProject}) => {
+	const {project} = props
+	const navigate = useNavigate()
+
 	return (
-		<Container width={props.image.width}>
+		<Container width={project.image_width}>
 			<StyledImg
-				onClick={() => imageStore.nextImage(props.image)}
-				src={SERVER_HOST + imageStore.getCurrentImageUrl(props.image)}
-				width={props.image.width}
-				key={props.image.id}
+				src={SERVER_HOST + project.image}
+				width={project.image_width}
 			/>
-			<ProjectInfo>
-				<ProjectName>Синхронизация контактов и всякое такое</ProjectName>
-				<ProjectDescription>
-					Его описание, как проекта который лежит где-то там
-					и ждёт чуда, как 10 лет назад. Проект пока не увидел свет,
-					но скоро это повиксится
-				</ProjectDescription>
-				<ProjectYear>2022</ProjectYear>
+			<ProjectInfo onClick={() => navigate(`projects/${project.id}`)}>
+				<ProjectName>{project.name}</ProjectName>
+				<ProjectDescription>{project.description}</ProjectDescription>
+				<ProjectYear>{project.year}</ProjectYear>
 			</ProjectInfo>
 		</Container>
 	)

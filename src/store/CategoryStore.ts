@@ -2,7 +2,6 @@ import {makeAutoObservable} from "mobx";
 import {ICategory} from "../interfaces/ICategory";
 import axios from "axios";
 import {SERVER_HOST} from "../constants/config";
-import {swiperStore} from "./SwiperStore";
 
 const defaultCategory: ICategory = {
 	id: 0,
@@ -13,9 +12,14 @@ const defaultCategory: ICategory = {
 
 class CategoryStore {
 	categories: ICategory[] = []
+	currentCategory = defaultCategory
 
 	constructor() {
 		makeAutoObservable(this)
+	}
+
+	setCurrentCategory(category: ICategory) {
+		this.currentCategory = category
 	}
 
 	fetchCategories() {
