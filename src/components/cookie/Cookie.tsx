@@ -5,9 +5,10 @@ import {media} from "../../constants/breakpoints";
 const Container = styled.div`
     position: fixed;
     bottom: 0;
+	left: 0;
     width: 100%;
     height: 96px;
-    background: #181818;
+    background: #FFFFFF;
 	padding: 0 20px;
 	display: flex;
 	justify-content: space-between;
@@ -24,23 +25,23 @@ const Container = styled.div`
 	}
 `
 const Text = styled.div`
-    font-family: 'Montserrat';
+    font-family: 'Manrope';
     font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
     letter-spacing: 0.07em;
-    color: #FFFFFF;
+    color: #111111;
 `
 const Button = styled.button`
-	background: white;
+	background: #111111;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.03em;
-    color: #181818;
+    color: white;
 	padding: 0 20px;
 	display: flex;
 	justify-content: center;
@@ -49,8 +50,7 @@ const Button = styled.button`
 	
 	@media (hover: hover) {
         &:hover {
-            background: #181818;
-            color: white;
+            opacity: 0.85;
         }
 	}
 `
@@ -68,7 +68,7 @@ export const Cookie = () => {
 			{showCookie &&
                 <Container>
 					<Text>
-                        Этот сайт использует cookies, впрочем, как и любой другой сайт в мире.
+                        Внимание! Спасибо. Этот сайт использует cookies.
 					</Text>
 					<Button onClick={handleCLick}>
 						OK

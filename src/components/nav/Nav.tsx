@@ -12,6 +12,7 @@ const Container = styled.nav`
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+	padding: 0 20px;
 
     &::-webkit-scrollbar {
         display: none;
@@ -22,10 +23,11 @@ const Container = styled.nav`
 
     ${media.tablet} {
         overflow: auto;
+        justify-content: start;
     }
 
     ${media.phone} {
-        column-gap: 17px;
+        column-gap: 20px;
     }
 `
 const Link = styled.button<{ active: boolean }>`
@@ -39,7 +41,8 @@ const Link = styled.button<{ active: boolean }>`
     font-size: 18px;
     line-height: 25px;
     letter-spacing: 0.06em;
-
+	white-space: nowrap;
+	
     @media (hover: hover) {
         ${props => !props.active && `
 			&:hover {

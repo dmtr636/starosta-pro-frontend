@@ -3,24 +3,25 @@ import {observer} from "mobx-react-lite"
 import {projectStore} from "../../store/ProjectStore";
 import {device, media} from "../../constants/breakpoints";
 import useWindowDimensions from "../../hooks/hooks";
-import {IAdditionalImage} from "../../interfaces/IAdditionalImage";
 import {Image} from "./Image";
 
 const Container = styled.div`
-	display: grid;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
-	margin-top: 30px;
+    margin-top: 30px;
+    padding: 0 20px;
 
-	${media.tablet} {
+    ${media.tablet} {
         grid-template-columns: repeat(3, 1fr);
-	}
-	${media.phone} {
-		grid-template-columns: repeat(2, 1fr);
-	}
+    }
+
+    ${media.phone} {
+        grid-template-columns: repeat(2, 1fr);
+    }
 `
 
-export const ImagesGrid = observer((props: {projectId: number}) => {
+export const ImagesGrid = observer((props: { projectId: number }) => {
 	let images = projectStore.getAdditionalImages(props.projectId) ?? []
 	const {width} = useWindowDimensions()
 

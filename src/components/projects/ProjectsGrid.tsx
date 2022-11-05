@@ -1,30 +1,30 @@
 import styled from "styled-components";
 import {observer} from "mobx-react-lite"
 import {projectStore} from "../../store/ProjectStore";
-import {SERVER_HOST} from "../../constants/config";
 import {device, media} from "../../constants/breakpoints";
 import useWindowDimensions from "../../hooks/hooks";
 import {Project} from "./Project";
-import {categoryStore} from "../../store/CategoryStore";
 import {IProject} from "../../interfaces/IProject";
+import {ICategory} from "../../interfaces/ICategory";
 
 const Container = styled.div`
-	display: grid;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
-	margin-top: 30px;
+    margin-top: 30px;
+	padding: 0 20px;
 
-	${media.tablet} {
+    ${media.tablet} {
         grid-template-columns: repeat(3, 1fr);
-	}
-	${media.phone} {
-		grid-template-columns: repeat(2, 1fr);
-	}
+    }
+
+    ${media.phone} {
+        grid-template-columns: repeat(2, 1fr);
+    }
 `
 
-export const ProjectsGrid = observer(() => {
-	const categoryId = categoryStore.currentCategory.id
-	let projects = projectStore.getProjects(categoryId)
+export const ProjectsGrid = observer((props: { category: ICategory }) => {
+	let projects = projectStore.getProjects(props.category.id)
 	const {width} = useWindowDimensions()
 
 	if (width < device.tablet) {

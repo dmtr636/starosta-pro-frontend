@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {HashRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {projectStore} from "./store/ProjectStore";
 import {categoryStore} from "./store/CategoryStore";
 import {observer} from "mobx-react-lite";
@@ -14,12 +14,12 @@ export const App = observer(() => {
 	}, [])
 
 	return (
-		<HashRouter>
+		<BrowserRouter>
 			<Routes>
 				<Route index element={<MainPage/>}/>
 				<Route path={"projects/:id"} element={<ProjectPage/>}/>
 				<Route path={"*"} element={<Page404/>}/>
 			</Routes>
-		</HashRouter>
+		</BrowserRouter>
 	)
 })

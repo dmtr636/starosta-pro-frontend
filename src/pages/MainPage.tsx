@@ -5,17 +5,18 @@ import {Cookie} from "../components/cookie/Cookie";
 import {Footer} from "../components/Footer/Footer";
 import styled from "styled-components";
 import {device} from "../constants/breakpoints";
-import {ImagesSwiper} from "../components/projects/ImagesSwiper";
+import {ProjectsSwiper} from "../components/projects/ProjectsSwiper";
 import {ProjectsGrid} from "../components/projects/ProjectsGrid";
 import useWindowDimensions from "../hooks/hooks";
 import {observer} from "mobx-react-lite";
+import {categoryStore} from "../store/CategoryStore";
 
 const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     background: #111111;
-    padding: 0 20px;
+	overflow-x: hidden;
 `
 
 export const MainPage = observer(() => {
@@ -26,8 +27,8 @@ export const MainPage = observer(() => {
 			<Header/>
 			<Nav/>
 			{width <= device.tablet
-				? <ImagesSwiper/>
-				: <ProjectsGrid/>
+				? <ProjectsSwiper/>
+				: <ProjectsGrid category={categoryStore.currentCategory}/>
 			}
 			<Footer/>
 			<Cookie/>

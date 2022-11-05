@@ -41,6 +41,13 @@ const ProjectInfo = styled.div`
     &:hover {
 		opacity: 1;
     }
+
+    ${media.phone} {
+        &:hover {
+			opacity: 0;
+			overflow: hidden;
+		}
+    }
 `
 const ProjectName = styled.div`
     font-family: 'Manrope';

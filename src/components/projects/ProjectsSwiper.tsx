@@ -1,7 +1,6 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {EffectCreative} from "swiper";
 import {swiperStore} from "../../store/SwiperStore";
-import {useLocation, useNavigate} from "react-router-dom";
 import {categoryStore} from "../../store/CategoryStore";
 import React, {useEffect} from "react";
 import {observer} from "mobx-react-lite";
@@ -9,16 +8,13 @@ import {ProjectsGrid} from "./ProjectsGrid";
 import "swiper/css";
 import "swiper/css/bundle";
 
-export const ImagesSwiper = observer((props: {projectId?: number}) => {
-	const navigate = useNavigate()
-	const location = useLocation()
-
+export const ProjectsSwiper = observer(() => {
 	useEffect(() => {
-		const index = categoryStore.categories.findIndex(category => `/${category.path}` === location.pathname)
+		const index = categoryStore.categories.findIndex(category => category.id === categoryStore.currentCategory.id)
 		if (swiperStore.swiper?.activeIndex !== index) {
 			swiperStore.swiper?.slideTo(index)
 		}
-	}, [location, categoryStore.categories])
+	}, [categoryStore.currentCategory])
 
 	return (
 		<>
@@ -39,11 +35,13 @@ export const ImagesSwiper = observer((props: {projectId?: number}) => {
 				autoHeight
 				style={{width: "100%"}}
 				onSwiper={swiper => swiperStore.setSwiper(swiper)}
-				onActiveIndexChange={swiper => navigate(`/${categoryStore.categories[swiper.activeIndex].path}`)}
+				onActiveIndexChange={swiper => {
+					categoryStore.setCurrentCategory(categoryStore.categories[swiper.activeIndex])
+				}}
 			>
-				{categoryStore.categories.map((category, index) =>
-					<SwiperSlide key={index} style={{minHeight: "calc(100vh - 315px)"}}>
-						<ProjectsGrid/>
+				{categoryStore.categories.map(category =>
+					<SwiperSlide key={category.id} style={{minHeight: "calc(100vh - 315px)", width: "100%"}}>
+						<ProjectsGrid category={category}/>
 					</SwiperSlide>
 				)}
 			</Swiper>

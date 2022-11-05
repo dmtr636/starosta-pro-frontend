@@ -5,7 +5,9 @@ import React, {useEffect, useState} from "react";
 import mail from "../../assets/Mail.svg"
 import telegram from "../../assets/Telegram.svg"
 import back from "../../assets/Back.svg"
+import menu from "../../assets/Menu.svg"
 import {useLocation, useNavigate} from "react-router-dom";
+import {HeaderMenu} from "./HeaderMenu";
 
 const Container = styled.header`
     height: 103px;
@@ -14,6 +16,7 @@ const Container = styled.header`
     justify-content: center;
     align-items: center;
 	position: relative;
+    margin: 0 20px;
 `
 const Title = styled.div`
     font-family: 'Oswald';
@@ -51,6 +54,13 @@ const BackButton = styled.button`
 		opacity: 1;
 	}
 `
+const MenuButton = styled.button`
+    position: absolute;
+	right: 0;
+    width: 33px;
+    height: 12px;
+	background: url(${menu});
+`
 
 export const Header = () => {
 	const {width} = useWindowDimensions()
@@ -79,14 +89,24 @@ export const Header = () => {
                 <BackButton onClick={() => navigate("/")}/>
 			}
 			<Title onClick={() => navigate("/")}>STAROSTA KIRILL</Title>
-			<Links>
-				<Link href={"mailto:starosta-2000@mail.ru"} target={"_blank"}>
-					<img src={mail} alt={""}/>
-				</Link>
-				<Link href={"https://t.me/starostakirill"} target={"_blank"}>
-					<img src={telegram} alt={""}/>
-				</Link>
-			</Links>
+			{width >= 600
+				?
+				<Links>
+					<Link href={"mailto:starosta-2000@mail.ru"} target={"_blank"}>
+						<img src={mail} alt={""}/>
+					</Link>
+					<Link href={"https://t.me/starostakirill"} target={"_blank"}>
+						<img src={telegram} alt={""}/>
+					</Link>
+				</Links>
+				:
+				<MenuButton onClick={() => setShowMenu(true)}/>
+			}
+			{showMenu &&
+				<HeaderMenu onClose={() => setShowMenu(false)}>
+					123
+				</HeaderMenu>
+			}
 		</Container>
 	)
 }

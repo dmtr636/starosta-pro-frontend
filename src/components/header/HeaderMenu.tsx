@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 import {media} from "../../constants/breakpoints";
+import close from "../../assets/Close.svg"
+import mail from "../../assets/MailLg.svg";
+import telegram from "../../assets/TelegramLg.svg";
 
 const Background = styled.div`
 	position: fixed;
@@ -8,37 +11,44 @@ const Background = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
-    background: rgba(24, 24, 24, 0.7);
+    background: #111111;
 	z-index: 10;
 `
-const Container = styled.div`
-    width: 473px;
-    height: 178px;
+const CloseButton = styled.div`
 	position: absolute;
 	top: 37px;
 	right: 20px;
-	background: white;
+`
+const Links = styled.div`
+	position: absolute;
+	bottom: 40px;
+	width: 100%;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	align-items: start;
-	row-gap: 20px;
-	padding: 0 20px;
+	column-gap: 40px;
+`
+const Link = styled.a`
+	opacity: 0.7;
 	
-	${media.phone} {
-		width: auto;
-		left: 39px;
-		padding: 37px 20px;
-		height: auto;
+	&:hover {
+		opacity: 1;
 	}
 `
 
-export const HeaderMenu = (props: {onClickOutside: () => void; children: ReactNode}) => {
+export const HeaderMenu = (props: {onClose: () => void; children: ReactNode}) => {
 	return (
-		<Background onClick={props.onClickOutside}>
-			<Container onClick={(event) => event.stopPropagation()}>
-				{props.children}
-			</Container>
+		<Background>
+			<CloseButton onClick={props.onClose}>
+				<img src={close} />
+			</CloseButton>
+			<Links>
+				<Link href={"mailto:starosta-2000@mail.ru"} target={"_blank"}>
+					<img src={mail} alt={""}/>
+				</Link>
+				<Link href={"https://t.me/starostakirill"} target={"_blank"}>
+					<img src={telegram} alt={""}/>
+				</Link>
+			</Links>
 		</Background>
 	)
 }
