@@ -4,7 +4,7 @@ import React from "react";
 import {Cookie} from "../components/cookie/Cookie";
 import {Footer} from "../components/Footer/Footer";
 import styled from "styled-components";
-import {device} from "../constants/breakpoints";
+import {device, media} from "../constants/breakpoints";
 import {ProjectsSwiper} from "../components/projects/ProjectsSwiper";
 import {ProjectsGrid} from "../components/projects/ProjectsGrid";
 import useWindowDimensions from "../hooks/hooks";
@@ -17,6 +17,10 @@ const Container = styled.div`
     flex-direction: column;
     background: #111111;
 	overflow-x: hidden;
+	
+	${media.phone} {
+		min-height: var(--app-height);
+	}
 `
 
 export const MainPage = observer(() => {

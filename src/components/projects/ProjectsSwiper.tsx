@@ -30,6 +30,7 @@ export const ProjectsSwiper = observer(() => {
 						opacity: 0.2
 					},
 				}}
+				initialSlide={categoryStore.categories.findIndex(category => category.id === categoryStore.currentCategory.id)}
 				modules={[EffectCreative]}
 				slidesPerView={1}
 				autoHeight

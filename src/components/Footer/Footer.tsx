@@ -18,7 +18,7 @@ const Container = styled.footer`
 export const Footer = () => {
 	return (
 		<Container>
-			2022
+			FOOTER
 		</Container>
 	)
 }

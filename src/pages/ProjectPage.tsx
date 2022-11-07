@@ -7,17 +7,26 @@ import styled from "styled-components";
 import {projectStore} from "../store/ProjectStore";
 import {ImagesGrid} from "../components/image/ImagesGrid";
 import {observer} from "mobx-react-lite";
+import {media} from "../constants/breakpoints";
 
 const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     background: #111111;
+
+    ${media.phone} {
+        min-height: var(--app-height);
+    }
 `
 const ProjectInfo = styled.div`
     margin-top: 30px;
     display: grid;
     justify-content: center;
+	
+	${media.phone} {
+        padding: 0 20px;
+    }
 `
 const ProjectName = styled.div`
     font-family: 'Manrope';

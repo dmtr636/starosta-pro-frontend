@@ -11,9 +11,9 @@ class SwiperStore {
 	constructor() {
 		makeAutoObservable(this)
 
-		/*setInterval(() => {
+		setInterval(() => {
 			swiperStore.swiper?.updateAutoHeight()
-		}, 100)*/
+		}, 100)
 	}
 }
 

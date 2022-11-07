@@ -14,6 +14,7 @@ const Container = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 20px;
+	z-index: 10;
 	
 	${media.phone} {
         height: auto;
@@ -21,7 +22,7 @@ const Container = styled.div`
 		justify-content: start;
 		align-items: start;
 		row-gap: 20px;
-		padding: 20px 20px 37px 20px;
+		padding: 20px;
 	}
 `
 const Text = styled.div`
@@ -32,21 +33,22 @@ const Text = styled.div`
     line-height: 27px;
     letter-spacing: 0.07em;
     color: #111111;
+	
+	${media.phone} {
+        font-size: 18px;
+        line-height: 25px;
+	}
 `
 const Button = styled.button`
 	background: #111111;
-    font-family: 'Montserrat';
+    font-family: 'Manrope';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 25px;
     letter-spacing: 0.03em;
-    color: white;
-	padding: 0 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 42px;
+    color: #FFFFFF;
+	padding: 6px 16px;
 	
 	@media (hover: hover) {
         &:hover {
