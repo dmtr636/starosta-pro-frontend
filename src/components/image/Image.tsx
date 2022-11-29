@@ -22,16 +22,42 @@ const StyledImg = styled.img<{width: number}>`
         grid-column: span ${props => props.width <= 2 ? props.width : 2};
     }
 `
+const StyledVideo = styled.video<{width: number}>`
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+
+    ${media.tablet} {
+        grid-column: span ${props => props.width <= 3 ? props.width : 3};
+    }
+    ${media.phone} {
+        grid-column: span ${props => props.width <= 2 ? props.width : 2};
+    }
+`
 
 export const Image = observer((props: {image: IImage}) => {
 	const {image} = props
 
 	return (
 		<Container width={image.image_width}>
-			<StyledImg
-				src={`${SERVER_HOST}/${image.image}`}
-				width={image.image_width}
-			/>
+			{image.type === "image"
+				?
+				<StyledImg
+					src={`${SERVER_HOST}/${image.image}`}
+					width={image.image_width}
+				/>
+				:
+				<StyledVideo
+					width={image.image_width}
+					muted
+					autoPlay
+					loop
+				>
+					<source src={`${SERVER_HOST}/${image.image}`} type={"video/mp4"}/>
+				</StyledVideo>
+			}
 		</Container>
 	)
 })

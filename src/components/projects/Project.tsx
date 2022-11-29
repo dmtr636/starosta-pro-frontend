@@ -54,7 +54,7 @@ const ProjectName = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    line-height: 33px;
+    line-height: 25px;
     letter-spacing: 0.01em;
     color: #111111;
 	max-width: 330px;
@@ -80,6 +80,20 @@ const ProjectYear = styled.div`
     letter-spacing: 0.01em;
     color: #111111;
 `
+const StyledVideo = styled.video<{width: number}>`
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+
+    ${media.tablet} {
+        grid-column: span ${props => props.width <= 3 ? props.width : 3};
+    }
+    ${media.phone} {
+        grid-column: span ${props => props.width <= 2 ? props.width : 2};
+    }
+`
 
 export const Project = observer((props: {project: IProject}) => {
 	const {project} = props
@@ -87,10 +101,22 @@ export const Project = observer((props: {project: IProject}) => {
 
 	return (
 		<Container width={project.image_width}>
-			<StyledImg
-				src={SERVER_HOST + project.image}
-				width={project.image_width}
-			/>
+			{project.type === "image"
+				?
+				<StyledImg
+					src={`${SERVER_HOST}/${project.image}`}
+					width={project.image_width}
+				/>
+				:
+				<StyledVideo
+					width={project.image_width}
+					muted
+					autoPlay
+					loop
+				>
+					<source src={`${SERVER_HOST}/${project.image}`} type={"video/mp4"}/>
+				</StyledVideo>
+			}
 			<ProjectInfo onClick={() => navigate(`projects/${project.id}`)}>
 				<ProjectName>{project.name}</ProjectName>
 				<ProjectDescription>{project.description}</ProjectDescription>
