@@ -1,5 +1,5 @@
 import {Header} from "../components/header/Header";
-import React from "react";
+import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {Cookie} from "../components/cookie/Cookie";
 import {Footer} from "../components/Footer/Footer";
@@ -68,6 +68,10 @@ export const ProjectPage = observer(() => {
 	const params = useParams<{ id: string }>()
 	const id = Number(params.id)
 	const project = projectStore.getProject(id)
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<Container>
