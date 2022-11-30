@@ -86,7 +86,13 @@ export const Header = () => {
 	return (
 		<Container>
 			{location.pathname !== "/" &&
-                <BackButton onClick={() => navigate("/")}/>
+                <BackButton onClick={() => {
+					if (window.history.state && window.history.state.idx > 0) {
+						navigate(-1)
+					} else {
+						navigate("/")
+					}
+				}}/>
 			}
 			<Title onClick={() => navigate("/")}>STAROSTA KIRILL</Title>
 			{width >= 600

@@ -2,9 +2,10 @@ import styled from "styled-components";
 import {useLocation} from "react-router-dom";
 import {categoryStore} from "../../store/CategoryStore";
 import {observer} from "mobx-react-lite";
-import {media} from "../../constants/breakpoints";
+import {device, media} from "../../constants/breakpoints";
 import {useEffect, useRef} from "react";
 import {ICategory} from "../../interfaces/ICategory";
+import useWindowDimensions from "../../hooks/hooks";
 
 const Container = styled.nav`
     display: flex;
@@ -55,12 +56,15 @@ const Link = styled.button<{ active: boolean }>`
 
 export const Nav = observer(() => {
 	const ref = useRef(null)
+	const {width} = useWindowDimensions()
 
 	useEffect(() => {
-		setTimeout(() => {
-			// @ts-ignore
-			ref.current!.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'})
-		}, 50)
+		if (width < device.desktop) {
+			setTimeout(() => {
+				// @ts-ignore
+				ref.current!.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'})
+			}, 50)
+		}
 	}, [categoryStore.currentCategory])
 
 	const isActive = (category: ICategory) => {
