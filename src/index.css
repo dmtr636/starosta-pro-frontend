@@ -20,3 +20,30 @@ a {
 :root {
   --app-height: 100%;
 }
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;    /* color of the scroll thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #C0C0C0;    /* color of the scroll thumb */
+}
+
+body {
+  overflow: overlay;
+}
+
+/* Scrollbar for firefox */
+html {
+  scrollbar-width: auto;          /* "auto" or "thin" */
+  scrollbar-color: #FFFFFF transparent;   /* scroll thumb and track */
+}
