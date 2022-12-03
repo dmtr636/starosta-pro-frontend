@@ -43,7 +43,7 @@ class ProjectStore {
 		if (categoryId) {
 			return this.projects.filter(image => image.category_id === categoryId)
 		} else {
-			return this.projects
+			return this.projects.filter(project => project.category_id !== categoryStore.archiveCategory?.id)
 		}
 	}
 

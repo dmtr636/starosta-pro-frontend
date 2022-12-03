@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {media} from "../../constants/breakpoints";
 import {observer} from "mobx-react-lite";
 import {IImage} from "../../interfaces/IImage";
+import {useEffect, useRef} from "react";
 
 const Container = styled.div<{width: number}>`
 	position: relative;
@@ -40,22 +41,34 @@ const StyledVideo = styled.video<{width: number}>`
 export const Image = observer((props: {image: IImage}) => {
 	const {image} = props
 
+	const refVideo = useRef<HTMLVideoElement>(null);
+
+	useEffect(() => {
+		if (!refVideo.current) {
+			return;
+		}
+		refVideo.current.defaultMuted = true;
+		refVideo.current.muted = true;
+	}, []);
+
 	return (
 		<Container width={image.image_width}>
 			{image.type === "image"
 				?
 				<StyledImg
-					src={`${SERVER_HOST}/${image.image}`}
+					src={`${SERVER_HOST}${image.image}`}
 					width={image.image_width}
 				/>
 				:
 				<StyledVideo
 					width={image.image_width}
 					muted
+					playsInline
 					autoPlay
 					loop
+					ref={refVideo}
 				>
-					<source src={`${SERVER_HOST}/${image.image}`} type={"video/mp4"}/>
+					<source src={`${SERVER_HOST}${image.image}`} type={"video/mp4"}/>
 				</StyledVideo>
 			}
 		</Container>

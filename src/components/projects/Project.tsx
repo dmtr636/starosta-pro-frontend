@@ -5,6 +5,7 @@ import {media} from "../../constants/breakpoints";
 import {projectStore} from "../../store/ProjectStore";
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useRef} from "react";
 
 const Container = styled.div<{width: number}>`
 	position: relative;
@@ -99,6 +100,16 @@ export const Project = observer((props: {project: IProject}) => {
 	const {project} = props
 	const navigate = useNavigate()
 
+	const refVideo = useRef<HTMLVideoElement>(null);
+
+	useEffect(() => {
+		if (!refVideo.current) {
+			return;
+		}
+		refVideo.current.defaultMuted = true;
+		refVideo.current.muted = true;
+	}, []);
+
 	return (
 		<Container width={project.image_width}>
 			{project.type === "image"
@@ -111,8 +122,10 @@ export const Project = observer((props: {project: IProject}) => {
 				<StyledVideo
 					width={project.image_width}
 					muted
+					playsInline
 					autoPlay
 					loop
+					ref={refVideo}
 				>
 					<source src={`${SERVER_HOST}/${project.image}`} type={"video/mp4"}/>
 				</StyledVideo>

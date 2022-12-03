@@ -2,5 +2,6 @@ export interface ICategory {
 	id: number,
 	name: string,
 	path: string,
-	position: number
+	position: number,
+	displayed: boolean
 }

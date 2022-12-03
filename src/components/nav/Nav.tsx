@@ -73,7 +73,7 @@ export const Nav = observer(() => {
 
 	return (
 		<Container>
-			{categoryStore.categories.map(category =>
+			{categoryStore.displayedCategories.map(category =>
 				<Link
 					active={isActive(category)}
 					ref={isActive(category) ? ref : null}

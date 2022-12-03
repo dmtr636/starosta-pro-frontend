@@ -7,7 +7,8 @@ const defaultCategory: ICategory = {
 	id: 0,
 	name: "ВСЕ",
 	path: "",
-	position: 0
+	position: 0,
+	displayed: true
 }
 
 class CategoryStore {
@@ -27,6 +28,14 @@ class CategoryStore {
 			.then(res => {
 				this.categories = [defaultCategory, ...res.data.result]
 			})
+	}
+
+	get archiveCategory() {
+		return this.categories.find(category => category.path === "archive")
+	}
+
+	get displayedCategories() {
+		return this.categories.filter(category => category.displayed)
 	}
 }
 
