@@ -15,10 +15,6 @@ const Container = styled.div`
 	padding: 0 20px;
 
     ${media.tablet} {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    ${media.phone} {
         grid-template-columns: repeat(2, 1fr);
     }
 `
@@ -27,10 +23,8 @@ export const ProjectsGrid = observer((props: { category: ICategory }) => {
 	let projects = projectStore.getProjects(props.category.id)
 	const {width} = useWindowDimensions()
 
-	if (width < device.tablet) {
+	if (width < device.desktop) {
 		projects = projectStore.adaptImagesTo2Col(projects) as IProject[]
-	} else if (width < device.desktop) {
-		projects = projectStore.adaptImagesTo3Col(projects) as IProject[]
 	}
 
 	return (

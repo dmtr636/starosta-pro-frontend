@@ -13,10 +13,6 @@ const Container = styled.div`
     padding: 0 20px;
 
     ${media.tablet} {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    ${media.phone} {
         grid-template-columns: repeat(2, 1fr);
     }
 `
@@ -26,10 +22,8 @@ export const ImagesGrid = observer((props: { projectId: number }) => {
 	const {width} = useWindowDimensions()
 
 	const getImages = () => {
-		if (width < device.tablet) {
+		if (width < device.desktop) {
 			return projectStore.adaptImagesTo2Col(images)
-		} else if (width < device.desktop) {
-			return projectStore.adaptImagesTo3Col(images)
 		}
 		return images
 	}
