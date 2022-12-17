@@ -52,8 +52,6 @@ const RoleBold = styled.span`
 	font-weight: 600;
 
 	${media.phone} {
-		display: block;
-		margin-bottom: 5px;
 	}
 `
 
