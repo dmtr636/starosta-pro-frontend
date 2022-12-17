@@ -5,7 +5,9 @@ import {media} from "../../constants/breakpoints";
 import {projectStore} from "../../store/ProjectStore";
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
+import {categoryStore} from "../../store/CategoryStore";
+import useWindowDimensions from "../../hooks/hooks";
 
 const Container = styled.div<{width: number}>`
 	position: relative;
@@ -81,6 +83,20 @@ const ProjectYear = styled.div`
     letter-spacing: 0.01em;
     color: #111111;
 `
+const ArchiveYear = styled.div`
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	padding: 6px 20px;
+	background: #111111;
+	font-family: 'Oswald';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.01em;
+	color: #FFFFFF;
+`
 const StyledVideo = styled.video<{width: number}>`
 	width: 100%;
 	height: 100%;
@@ -101,6 +117,8 @@ export const Project = observer((props: {project: IProject}) => {
 	const navigate = useNavigate()
 
 	const refVideo = useRef<HTMLVideoElement>(null);
+	const [isShowYear, setShowYear] = useState(true)
+	const {width} = useWindowDimensions()
 
 	useEffect(() => {
 		if (!refVideo.current) {
@@ -130,11 +148,28 @@ export const Project = observer((props: {project: IProject}) => {
 					<source src={`${SERVER_HOST}/${project.image}`} type={"video/mp4"}/>
 				</StyledVideo>
 			}
-			<ProjectInfo onClick={() => navigate(`projects/${project.id}`)}>
+			<ProjectInfo
+				onClick={() => {
+					if (project.category_id !== categoryStore.archiveCategory?.id) {
+						navigate(`projects/${project.id}`)
+					}
+				}}
+				onMouseEnter={() => {
+					if (width >= 1280) {
+						setShowYear(false)
+					}
+				}}
+				onMouseLeave={() => setShowYear(true)}
+			>
 				<ProjectName>{project.name}</ProjectName>
 				<ProjectDescription>{project.description}</ProjectDescription>
-				<ProjectYear>{project.year}</ProjectYear>
+				{project.category_id !== categoryStore.archiveCategory?.id &&
+					<ProjectYear>{project.year}</ProjectYear>
+				}
 			</ProjectInfo>
+			{project.category_id === categoryStore.archiveCategory?.id && isShowYear &&
+				<ArchiveYear>{project.year}</ArchiveYear>
+			}
 		</Container>
 	)
 })

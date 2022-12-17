@@ -6,6 +6,8 @@ import {device, media} from "../../constants/breakpoints";
 import {useEffect, useRef} from "react";
 import {ICategory} from "../../interfaces/ICategory";
 import useWindowDimensions from "../../hooks/hooks";
+import archive from "../../assets/Arcive.svg"
+import ArchiveIcon from "../../assets/ArchiveIcon";
 
 const Container = styled.nav`
     display: flex;
@@ -43,6 +45,10 @@ const Link = styled.button<{ active: boolean }>`
     line-height: 25px;
     letter-spacing: 0.06em;
 	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
 	
     @media (hover: hover) {
         ${props => !props.active && `
@@ -61,6 +67,9 @@ export const Nav = observer(() => {
 	useEffect(() => {
 		if (width < device.desktop) {
 			setTimeout(() => {
+				if (categoryStore.currentCategory.position < 1) {
+					return
+				}
 				// @ts-ignore
 				ref.current!.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'})
 			}, 50)
@@ -80,6 +89,9 @@ export const Nav = observer(() => {
 					key={category.id}
 					onClick={() => categoryStore.setCurrentCategory(category)}
 				>
+					{category.path === "archive" &&
+						<ArchiveIcon color={isActive(category) ? "#111111" : "white"}/>
+					}
 					{category.name}
 				</Link>
 			)}

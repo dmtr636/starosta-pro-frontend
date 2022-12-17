@@ -30,7 +30,7 @@ export const ProjectsGrid = observer((props: { category: ICategory }) => {
 	return (
 		<Container>
 			{projects.map(project =>
-				<Project project={project}/>
+				<Project project={project} key={project.id}/>
 			)}
 		</Container>
 	)

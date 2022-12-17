@@ -4,6 +4,7 @@ import {projectStore} from "../../store/ProjectStore";
 import {device, media} from "../../constants/breakpoints";
 import useWindowDimensions from "../../hooks/hooks";
 import {Image} from "./Image";
+import {IImage} from "../../interfaces/IImage";
 
 const Container = styled.div`
     display: grid;
@@ -14,11 +15,12 @@ const Container = styled.div`
 
     ${media.tablet} {
         grid-template-columns: repeat(2, 1fr);
+		margin-top: 20px;
     }
 `
 
-export const ImagesGrid = observer((props: { projectId: number }) => {
-	let images = projectStore.getAdditionalImages(props.projectId) ?? []
+export const ImagesGrid = observer((props: { projectId: number; images?: IImage[] }) => {
+	let images = props.images ?? projectStore.getAdditionalImages(props.projectId) ?? []
 	const {width} = useWindowDimensions()
 
 	const getImages = () => {

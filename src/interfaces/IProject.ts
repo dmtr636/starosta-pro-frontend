@@ -11,5 +11,8 @@ export interface IProject extends IImage {
 	position?: number,
 	category_id?: number,
 	additional_images: IAdditionalImage[],
-	currentIndex?: number
+	currentIndex?: number,
+	purpose: string,
+	role: string,
+	url?: string
 }

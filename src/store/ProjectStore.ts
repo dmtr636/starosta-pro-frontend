@@ -22,7 +22,6 @@ class ProjectStore {
 		axios.get(SERVER_HOST + "/api/projects")
 			.then((res) => {
 				this.projects = res.data.result
-				console.log(res.data.result)
 			}
 		)
 	}
