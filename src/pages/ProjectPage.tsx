@@ -55,22 +55,30 @@ const RoleBold = styled.span`
 	}
 `
 
-const Link = styled(Role)`
+const LinkIcon = styled.div`
+	margin-left: 12px;
+	opacity: 0.7;
+`
+
+const Link = styled.a`
+	font-family: 'Manrope';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 22px;
+	letter-spacing: 0.06em;
+	color: #FFFFFF;
 	display: flex;
 	align-items: center;
 
 	${media.phone} {
 		margin-top: 20px;
 	}
-`
-
-const LinkIcon = styled.a`
-	margin-left: 12px;
-	opacity: 0.7;
-
-	&:hover {
+	
+	&:hover ${LinkIcon} {
 		opacity: 1;
 	}
+}
 `
 
 const InfoRow = styled.div`
@@ -104,6 +112,7 @@ const InfoDescription = styled.div`
 	line-height: 22px;
 	letter-spacing: 0.06em;
 	color: #FFFFFF;
+	white-space: pre-line;
 `
 
 export const ProjectPage = observer(() => {
@@ -142,13 +151,17 @@ export const ProjectPage = observer(() => {
 			<Content>
 				<ProjectHeader>
 					<Role>
-						<RoleBold>Роль на проекте: </RoleBold>
-						{project?.role}
+						{project.role &&
+							<>
+								<RoleBold>Роль на проекте: </RoleBold>
+								{project.role}
+							</>
+						}
 					</Role>
 					{project.url && width >= 700 &&
-						<Link>
+						<Link href={project?.url} target={"_blank"}>
 							Ссылка на проект
-							<LinkIcon href={project?.url} target={"_blank"}>
+							<LinkIcon>
 								<img src={linkIcon} />
 							</LinkIcon>
 						</Link>
@@ -158,9 +171,9 @@ export const ProjectPage = observer(() => {
 				<Image image={project.additional_images[0]}/>
 
 				{project.url && width < 700 &&
-					<Link>
+					<Link href={project?.url} target={"_blank"}>
 						Ссылка на проект
-						<LinkIcon href={project?.url} target={"_blank"}>
+						<LinkIcon>
 							<img src={linkIcon} />
 						</LinkIcon>
 					</Link>
@@ -172,18 +185,20 @@ export const ProjectPage = observer(() => {
 				</InfoRow>
 			</Content>
 
-			{imagesForGrid &&
+			{imagesForGrid.length > 0 &&
 				<ImagesGrid images={imagesForGrid} projectId={project.id} />
 			}
 
-			<Content>
-				<InfoRow>
-					<InfoName>Цель</InfoName>
-					<InfoDescription>{project.purpose}</InfoDescription>
-				</InfoRow>
-			</Content>
+			{project.purpose &&
+				<Content>
+					<InfoRow>
+						<InfoName>Цель</InfoName>
+						<InfoDescription>{project.purpose}</InfoDescription>
+					</InfoRow>
+				</Content>
+			}
 
-			{otherImages &&
+			{otherImages.length > 0 &&
 				<ImagesGrid images={otherImages} projectId={project.id} />
 			}
 

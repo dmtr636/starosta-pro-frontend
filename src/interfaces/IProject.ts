@@ -12,7 +12,7 @@ export interface IProject extends IImage {
 	category_id?: number,
 	additional_images: IAdditionalImage[],
 	currentIndex?: number,
-	purpose: string,
-	role: string,
+	purpose?: string,
+	role?: string,
 	url?: string
 }
