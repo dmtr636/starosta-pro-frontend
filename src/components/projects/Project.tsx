@@ -74,6 +74,8 @@ const ProjectDescription = styled.div`
 	max-width: 520px;
 `
 const ProjectYear = styled.div`
+	position: absolute;
+	bottom: 30px;
 	margin-top: 30px;
     font-family: 'Oswald';
     font-style: normal;
