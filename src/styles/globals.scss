@@ -1,0 +1,40 @@
+@import "vars";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Manrope', sans-serif;
+    color: $color-black;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    -webkit-user-drag: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+button:disabled {
+    cursor: initial;
+}
+
+img, svg {
+    display: block;
+}
+
+input, textarea {
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+}

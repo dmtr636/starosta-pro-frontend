@@ -1,25 +1,17 @@
-import React, {useEffect} from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {projectStore} from "./store/ProjectStore";
-import {categoryStore} from "./store/CategoryStore";
-import {observer} from "mobx-react-lite";
-import {Page404} from "./pages/Page404";
-import {MainPage} from "./pages/MainPage";
-import {ProjectPage} from "./pages/ProjectPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from "@/routes/routes.tsx";
+import { store } from "@/stores/store.ts";
+import { useEffect } from "react";
 
-export const App = observer(() => {
-	useEffect(() => {
-		categoryStore.fetchCategories()
-		projectStore.fetchProjects()
-	}, [])
+export const App = () => {
+    const fetchCategories = store.use.fetchCategories();
+    const fetchWorks = store.use.fetchWorks();
+    const router = createBrowserRouter(routes);
 
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route index element={<MainPage/>}/>
-				<Route path={"projects/:id"} element={<ProjectPage/>}/>
-				<Route path={"*"} element={<Page404/>}/>
-			</Routes>
-		</BrowserRouter>
-	)
-})
+    useEffect(() => {
+        fetchCategories().catch(console.error);
+        fetchWorks().catch(console.error);
+    }, [fetchCategories, fetchWorks]);
+
+    return <RouterProvider router={router} />;
+};

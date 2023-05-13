@@ -1,0 +1,60 @@
+@import "src/styles/vars";
+
+.sidebar {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+}
+
+.header {
+
+}
+
+.name {
+    margin-bottom: 5px;
+}
+
+.specialty {
+    color: $color-black-hover;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.link {
+    &:hover {
+        color: $color-black-hover;
+    }
+}
+
+.menu {
+    display: grid;
+    gap: 20px;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.menuLink {
+    margin: -0.25em 0;
+    color: $color-menu-link;
+
+    &:hover:not(.active) {
+        color: $color-menu-link-hover;
+    }
+
+    &.active {
+        color: $color-black;
+    }
+}
