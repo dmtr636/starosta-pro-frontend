@@ -4,14 +4,12 @@ import { store } from "@/stores/store.ts";
 import { useEffect } from "react";
 
 export const App = () => {
-    const fetchCategories = store.use.fetchCategories();
-    const fetchWorks = store.use.fetchWorks();
     const router = createBrowserRouter(routes);
 
     useEffect(() => {
-        fetchCategories().catch(console.error);
-        fetchWorks().catch(console.error);
-    }, [fetchCategories, fetchWorks]);
+        store.fetchCategories().catch(console.error);
+        store.fetchWorks().catch(console.error);
+    }, []);
 
     return <RouterProvider router={router} />;
 };

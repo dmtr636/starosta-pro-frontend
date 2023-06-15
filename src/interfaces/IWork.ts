@@ -5,7 +5,11 @@ export interface IImage {
     type: "image" | "video",
 }
 
-export interface IWork extends IImage {
+export interface IWork {
+    id: number,
+    image: string,
+    image_width: number,
+    type: "image" | "video",
     position: number,
     category_id: number,
     name: string,

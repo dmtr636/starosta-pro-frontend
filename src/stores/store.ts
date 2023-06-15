@@ -1,37 +1,39 @@
-import { create } from "zustand";
 import { ICategory } from "@/interfaces/ICategory.ts";
-import { fetchCategories, fetchWorks } from "@/api/api.ts";
+import * as api from "@/api/api.ts";
 import { IWork } from "@/interfaces/IWork.ts";
-import { createSelectors } from "@/helpers/createSelectors.ts";
+import { makeAutoObservable } from "mobx";
 
-type State = {
-    works: IWork[];
-    categories: ICategory[];
-    activeCategory: ICategory | null;
-};
+class Store {
+    constructor() {
+        makeAutoObservable(this);
+    }
 
-type Actions = {
-    fetchWorks: () => Promise<void>;
-    fetchCategories: () => Promise<void>;
-    setActiveCategory: (category: ICategory | null) => void;
-};
+    works: IWork[] = [];
+    categories: ICategory[] = [];
+    activeCategory: ICategory | null = null;
 
-const useStoreBase = create<State & Actions>()((set) => ({
-    works: [],
-    categories: [],
-    activeCategory: null,
+    async fetchWorks() {
+        this.works = await api.fetchWorks();
+    }
 
-    fetchWorks: async () => {
-        const works = await fetchWorks();
-        set(() => ({ works }));
-    },
+    async fetchCategories() {
+        this.categories = await api.fetchCategories();
+    }
 
-    fetchCategories: async () => {
-        const categories = await fetchCategories();
-        set(() => ({ categories }));
-    },
+    setActiveCategory(activeCategory: ICategory | null) {
+        this.activeCategory = activeCategory;
+    }
 
-    setActiveCategory: (activeCategory) => set(() => ({ activeCategory })),
-}));
+    getWorkById(id: string) {
+        return this.works.find((w) => w.id.toString() === id);
+    }
 
-export const store = createSelectors(useStoreBase);
+    get filteredWorks() {
+        if (this.activeCategory) {
+            return this.works.filter((w) => w.category_id === this.activeCategory?.id);
+        }
+        return this.works;
+    }
+}
+
+export const store = new Store();

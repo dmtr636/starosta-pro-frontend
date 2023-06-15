@@ -3,19 +3,16 @@ import { store } from "@/stores/store.ts";
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 import { ICategory } from "@/interfaces/ICategory.ts";
+import {observer} from "mobx-react-lite";
 
-export const Sidebar = () => {
-    const categories = store.use.categories();
-    const activeCategory = store.use.activeCategory();
-    const setActiveCategory = store.use.setActiveCategory();
-
+export const Sidebar = observer(() => {
     const genMenuLink = (category: ICategory | null) => (
         <NavLink
             to={"/"}
             className={classNames(styles.menuLink, {
-                [styles.active]: activeCategory === category,
+                [styles.active]: store.activeCategory === category,
             })}
-            onClick={() => setActiveCategory(category)}
+            onClick={() => store.setActiveCategory(category)}
         >
             {category?.name ?? "ALL"}
         </NavLink>
@@ -36,12 +33,12 @@ export const Sidebar = () => {
                     EMAIL
                 </a>
             </div>
-            {categories.length > 0 && (
+            {store.categories.length > 0 && (
                 <div className={styles.menu}>
                     {genMenuLink(null)}
-                    {categories.map(genMenuLink)}
+                    {store.categories.map(genMenuLink)}
                 </div>
             )}
         </div>
     );
-};
+});
