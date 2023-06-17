@@ -1,0 +1,38 @@
+@import "src/styles/vars";
+
+.layout {
+    padding-top: 6.67rem;
+    padding-right: 20px;
+}
+
+.nameRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.name {
+    margin-top: -0.25em;
+    font-weight: 600;
+    font-size: 1.66rem;
+}
+
+.type {
+    font-weight: 500;
+    font-size: 1.33rem;
+    opacity: 0.7;
+}
+
+.description {
+    height: 14.16rem;
+    columns: 2 20px;
+    column-fill: auto;
+    margin-top: 1.5rem;
+    font-weight: 400;
+    font-size: 1.33rem;
+    line-height: 1.43em;
+    letter-spacing: 0.03em;
+    opacity: 0.5;
+}

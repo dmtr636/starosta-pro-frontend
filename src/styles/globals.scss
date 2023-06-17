@@ -9,8 +9,8 @@
 html {
     font-family: 'Manrope', sans-serif;
     color: $color-black;
-    font-size: calc((100vw - 1280px)/(1920 - 1280) * (18 - 12) + 12px);
-    
+    font-size: calcResponsiveSize(12, 18);
+
     @include desktopLg {
         font-size: 18px;
     }
