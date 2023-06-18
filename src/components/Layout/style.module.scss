@@ -1,8 +1,14 @@
+@import "src/styles/vars";
+
 .layout {
     display: grid;
-    grid-template-columns: calc((100vw - 1280px)/(1920 - 1280) * (340 - 230) + 230px) auto;
+    grid-template-columns: 230px auto;
     max-width: 1920px;
     margin: 0 auto;
+
+    @include desktopLg {
+        grid-template-columns: 340px auto;
+    }
 }
 
 .content {

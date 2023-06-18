@@ -8,6 +8,10 @@
     text-transform: capitalize;
     display: flex;
     flex-direction: column;
+
+    @include desktopLg {
+        padding: 120px 20px;
+    }
 }
 
 .header {
@@ -16,6 +20,12 @@
     letter-spacing: 0.02em;
     display: grid;
     gap: 12px;
+
+    @include desktopLg {
+        gap: 18px;
+        font-size: 18px;
+        line-height: 25px;
+    }
 }
 
 .name {
@@ -26,6 +36,10 @@
 .specialties {
     display: grid;
     gap: 6px;
+
+    @include desktopLg {
+        gap: 9px;
+    }
 }
 
 .specialty {
@@ -41,13 +55,25 @@
     align-items: start;
     gap: 12px;
     margin-top: 170px;
+
+    @include desktopLg {
+        gap: 18px;
+        margin-top: 257px;
+    }
 }
 
 .link {
     @include textTrim;
+    font-size: 12px;
+    line-height: 16px;
 
     &:hover {
         color: $color-black-hover;
+    }
+
+    @include desktopLg {
+        font-size: 18px;
+        line-height: 25px;
     }
 }
 
@@ -59,6 +85,12 @@
     font-size: 24px;
     line-height: 33px;
     letter-spacing: 0.02em;
+
+    @include desktopLg {
+        gap: 30px;
+        font-size: 36px;
+        line-height: 49px;
+    }
 }
 
 .menuLink {

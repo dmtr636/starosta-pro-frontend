@@ -2,11 +2,19 @@
 
 .layout {
     padding: 80px 20px 80px 0;
+
+    @include desktopLg {
+        padding: 120px 20px 120px 0;
+    }
 }
 
 .info {
     display: grid;
     gap: 32px;
+
+    @include desktopLg {
+        gap: 48px;
+    }
 }
 
 .nameRow {
@@ -21,6 +29,10 @@
     @include textTrim;
     font-weight: 600;
     font-size: 20px;
+
+    @include desktopLg {
+        font-size: 30px;
+    }
 }
 
 .type {
@@ -28,6 +40,10 @@
     font-weight: 500;
     font-size: 16px;
     opacity: 0.7;
+
+    @include desktopLg {
+        font-size: 24px;
+    }
 }
 
 .description {
@@ -40,12 +56,23 @@
     line-height: 22px;
     letter-spacing: 0.03em;
     opacity: 0.5;
+
+    @include desktopLg {
+        max-height: 255px;
+        font-size: 24px;
+        line-height: 33px;
+    }
 }
 
 .imageList {
     margin-top: 40px;
     display: grid;
     gap: 12px;
+
+    @include desktopLg {
+        margin-top: 60px;
+        gap: 18px;
+    }
 }
 
 .image {
