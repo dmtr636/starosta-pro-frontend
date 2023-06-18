@@ -10,7 +10,10 @@ export const MainPage = observer(() => {
     return (
         <div className={styles.list}>
             {store.filteredWorks.map((work) => (
-                <div className={styles.work} onClick={() => navigate(`/work/${work.id}`)}>
+                <div
+                    className={styles.work}
+                    onClick={() => navigate(`/work/${work.id}`)}
+                >
                     {work.type === "image" ? (
                         <img
                             className={styles.image}

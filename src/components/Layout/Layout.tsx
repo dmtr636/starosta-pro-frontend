@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import styles from "./style.module.scss";
 import { Sidebar } from "@/components/Sidebar/Sidebar.tsx";
 import { Cookie } from "@/components/Cookie/Cookie.tsx";
@@ -13,6 +13,7 @@ export const Layout = () => {
             </div>
             <Cookie/>
             <Arrow/>
+            <ScrollRestoration/>
         </div>
     )
 }
