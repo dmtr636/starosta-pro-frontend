@@ -7,6 +7,10 @@ $color-menu-link-hover: rgba(36, 36, 36, 0.3);
   @media (min-width: 1920px) { @content; }
 }
 
+@mixin textTrim {
+  margin: -0.27em 0;
+}
+
 @function calcResponsiveSize($f-min, $f-max) {
   $k: calc(($f-max - $f-min)/(1920 - 1280));
   $b: $f-min - $k * 1280;

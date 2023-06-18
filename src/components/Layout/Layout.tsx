@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import styles from "./style.module.scss";
 import { Sidebar } from "@/components/Sidebar/Sidebar.tsx";
+import { Cookie } from "@/components/Cookie/Cookie.tsx";
 
 export const Layout = () => {
     return (
@@ -9,6 +10,7 @@ export const Layout = () => {
             <div className={styles.content}>
                 <Outlet/>
             </div>
+            <Cookie/>
         </div>
     )
 }

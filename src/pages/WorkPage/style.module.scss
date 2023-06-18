@@ -1,8 +1,12 @@
 @import "src/styles/vars";
 
 .layout {
-    padding-top: 6.67rem;
-    padding-right: 20px;
+    padding: 80px 20px 80px 0;
+}
+
+.info {
+    display: grid;
+    gap: 32px;
 }
 
 .nameRow {
@@ -14,25 +18,37 @@
 }
 
 .name {
-    margin-top: -0.25em;
+    @include textTrim;
     font-weight: 600;
-    font-size: 1.66rem;
+    font-size: 20px;
 }
 
 .type {
+    @include textTrim;
     font-weight: 500;
-    font-size: 1.33rem;
+    font-size: 16px;
     opacity: 0.7;
 }
 
 .description {
-    height: 14.16rem;
+    @include textTrim;
+    max-height: 166px;
     columns: 2 20px;
     column-fill: auto;
-    margin-top: 1.5rem;
     font-weight: 400;
-    font-size: 1.33rem;
-    line-height: 1.43em;
+    font-size: 16px;
+    line-height: 22px;
     letter-spacing: 0.03em;
     opacity: 0.5;
+}
+
+.imageList {
+    margin-top: 40px;
+    display: grid;
+    gap: 12px;
+}
+
+.image {
+    width: 100%;
+    object-fit: cover;
 }

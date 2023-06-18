@@ -22,11 +22,13 @@ export const Sidebar = observer(() => {
         <div className={styles.sidebar}>
             <div className={styles.header}>
                 <div className={styles.name}>STAROSTA</div>
-                <div className={styles.specialty}>PRODUCT DESIGNER</div>
-                <div className={styles.specialty}>3D ARTIST</div>
+                <div className={styles.specialties}>
+                    <div className={styles.specialty}>PRODUCT DESIGNER</div>
+                    <div className={styles.specialty}>3D ARTIST</div>
+                </div>
             </div>
             <div className={styles.links}>
-                <a href="https://ru.linkedin.com/" target="_blank" className={styles.link}>
+                <a href="https://www.linkedin.com/in/starosta-kirill" target="_blank" className={styles.link}>
                     LINKEDIN
                 </a>
                 <a href="mailto:starosta-2000@mail.ru" target="_blank" className={styles.link}>

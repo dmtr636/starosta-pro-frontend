@@ -1,7 +1,7 @@
 @import "src/styles/vars";
 
 .list {
-    padding: 6.67rem 20px;
+    padding: 80px 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
@@ -17,26 +17,31 @@
 }
 
 .image {
-    display: block;
     width: 100%;
-    height: 20.83rem;
+    height: auto;
     object-fit: cover;
 }
 
+.info {
+    margin-top: 16px;
+    display: grid;
+    gap: 12px;
+}
+
 .name {
-    margin-top: 1rem;
+    @include textTrim;
     font-weight: 400;
-    font-size: 1.33rem;
-    line-height: 1.33em;
+    font-size: 16px;
+    line-height: 22px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
 }
 
 .year {
-    margin-top: 0.75rem;
+    @include textTrim;
+    font-size: 12px;
+    line-height: 16px;
     font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.33em;
     letter-spacing: 0.02em;
     opacity: 0.6;
 }
