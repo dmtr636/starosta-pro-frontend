@@ -6,7 +6,7 @@
     right: 20px;
 
     &:hover {
-        opacity: 0.8;
+        filter: invert(1) brightness(1.5);
     }
 
     img {
