@@ -1,0 +1,21 @@
+@import "src/styles/vars";
+
+.arrow {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    img {
+        width: 56px;
+        height: 56px;
+
+        @include desktopLg {
+            width: 84px;
+            height: 84px;
+        }
+    }
+}
