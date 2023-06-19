@@ -5,17 +5,37 @@
     bottom: 20px;
     right: 20px;
 
-    &:hover {
-        filter: invert(1) brightness(1.5);
+    width: 56px;
+    height: 56px;
+
+    background: $color-black;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include desktopLg {
+        width: 84px;
+        height: 84px;
     }
 
-    img {
-        width: 56px;
-        height: 56px;
+    &:hover {
+        background: white;
+        box-shadow: 0px 0px 4px rgba(40, 40, 40, 0.14);
+
+        svg path {
+            fill: $color-black;
+        }
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
 
         @include desktopLg {
-            width: 84px;
-            height: 84px;
+            width: 36px;
+            height: 36px;
         }
     }
 }

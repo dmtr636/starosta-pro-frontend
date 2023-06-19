@@ -11,6 +11,7 @@ class Store {
     works: IWork[] = [];
     categories: ICategory[] = [];
     activeCategory: ICategory | null = null;
+    showCookie = JSON.parse(localStorage.getItem("showCookie") ?? "true");
 
     async fetchWorks() {
         this.works = await api.fetchWorks();
@@ -26,6 +27,11 @@ class Store {
 
     getWorkById(id: string) {
         return this.works.find((w) => w.id.toString() === id);
+    }
+
+    setShowCookie(value: boolean) {
+        this.showCookie = value;
+        localStorage.setItem("showCookie", JSON.stringify(value));
     }
 
     get filteredWorks() {
