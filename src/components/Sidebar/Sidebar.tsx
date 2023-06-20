@@ -24,7 +24,6 @@ export const Sidebar = observer(() => {
                 <div className={styles.name}>STAROSTA</div>
                 <div className={styles.specialties}>
                     <div className={styles.specialty}>PRODUCT DESIGNER</div>
-                    <div className={styles.specialty}>3D ARTIST</div>
                 </div>
             </div>
             <div className={styles.links}>

@@ -45,6 +45,10 @@ input, textarea {
 }
 
 /* Scrollbar */
+html {
+    scrollbar-gutter: stable;
+}
+
 body::-webkit-scrollbar {
     width: 8px;
 }
