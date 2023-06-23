@@ -1,0 +1,73 @@
+@import "src/styles/vars";
+
+.list {
+    padding: 80px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 40px;
+
+    @include desktopLg {
+        padding: 120px 20px;
+        row-gap: 60px;
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        row-gap: 30px;
+    }
+}
+
+.work {
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.info {
+    margin-top: 16px;
+    display: grid;
+    gap: 12px;
+
+    @include desktopLg {
+        margin-top: 24px;
+        gap: 18px;
+    }
+}
+
+.name {
+    @include textTrim;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    @include desktopLg {
+        font-size: 24px;
+        line-height: 33px;
+    }
+}
+
+.year {
+    @include textTrim;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    opacity: 0.6;
+
+    @include desktopLg {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}

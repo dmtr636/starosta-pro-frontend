@@ -9,8 +9,8 @@
     @include desktopLg {
         grid-template-columns: 340px auto;
     }
-}
 
-.content {
-
+    @include mobile {
+        display: block;
+    }
 }

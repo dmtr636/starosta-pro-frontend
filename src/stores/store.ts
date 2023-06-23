@@ -29,6 +29,10 @@ class Store {
         return this.works.find((w) => w.id.toString() === id);
     }
 
+    filterWorksByCategory(category: ICategory) {
+        return this.works.filter((w) => w.category_id === category?.id);
+    }
+
     setShowCookie(value: boolean) {
         this.showCookie = value;
         localStorage.setItem("showCookie", JSON.stringify(value));
@@ -36,7 +40,7 @@ class Store {
 
     get filteredWorks() {
         if (this.activeCategory) {
-            return this.works.filter((w) => w.category_id === this.activeCategory?.id);
+            return this.filterWorksByCategory(this.activeCategory)
         }
         return this.works;
     }

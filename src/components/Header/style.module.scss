@@ -1,0 +1,108 @@
+@import "src/styles/vars";
+
+.header {
+    display: flex;
+    height: 60px;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.28px;
+    @include textTrim;
+}
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    top: 60px;
+    left: 0;
+    overflow: hidden;
+    z-index: 10;
+
+    animation: fadeIn 0.25s ease-out;
+
+    @keyframes fadeIn {
+        from {
+            background-color: transparent;
+        }
+        to {
+            background-color: rgba(0,0,0,.5);
+        }
+    }
+}
+
+.overlayFadingOut {
+    background-color: transparent;
+    animation: fadeOut 0.25s ease-out;
+
+    @keyframes fadeOut {
+        from {
+            background-color: rgba(0,0,0,.5);
+        }
+        to {
+            background-color: transparent;
+        }
+    }
+}
+
+.menu {
+    height: 100%;
+    background: white;
+    padding: 5px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+
+    transition: transform 0.25s ease-out;
+    animation: enter 0.25s ease-out;
+
+    @keyframes enter {
+        from {
+            transform: translate(0, -100%);
+        }
+        to {
+            transform: translate(0, 0);
+        }
+    }
+}
+
+.menuExiting {
+    transform: translate(0, -100%);
+    animation: exit 0.25s ease-out;
+
+    @keyframes exit {
+        from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(0, -100%);
+        }
+    }
+}
+
+.specialty {
+    @include textTrim;
+
+    color: $color-black-hover;
+    font-weight: 300;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    margin-top: auto;
+}
+
+.link {
+    @include textTrim;
+
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}

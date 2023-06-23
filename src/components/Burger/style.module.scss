@@ -1,0 +1,23 @@
+@import "src/styles/vars";
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.line1, .line2 {
+  transition: all 0.2s ease-out;
+  transform-origin: center;
+  fill: $color-black;
+}
+
+.iconOpen {
+  .line1 {
+    transform: rotate(45deg) translateY(2.5px);
+  }
+
+  .line2 {
+    transform: rotate(-45deg) translateY(-2.5px);
+  }
+}
+

@@ -9,7 +9,7 @@
 html {
     font-family: 'Manrope', sans-serif;
     color: $color-black;
-    font-size: calcResponsiveSize(12, 18);
+    font-size: 12px;
 
     @include desktopLg {
         font-size: 18px;
