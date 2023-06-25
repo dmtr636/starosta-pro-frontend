@@ -7,7 +7,7 @@ export const Arrow = observer(() => {
     const [showArrow, setShowArrow] = useState(false);
 
     const handleScroll = () => {
-        setShowArrow(window.scrollY > 100);
+        setShowArrow(window.scrollY > 60);
     };
 
     useEffect(() => {
