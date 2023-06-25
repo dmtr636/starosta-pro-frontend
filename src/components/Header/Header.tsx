@@ -9,15 +9,16 @@ export const Header = observer(() => {
     const [isMenuExiting, setMenuExiting] = useState(false);
 
     const toggleMenu = () => {
-        if (!isMenuOpen) {
-            setMenuOpen(true);
-        } else {
-            setMenuOpen(false);
+        if (isMenuOpen) {
+            document.body.style.overflow = "auto";
             setMenuExiting(true);
             setTimeout(() => {
                 setMenuExiting(false);
             }, 250);
+        } else {
+            document.body.style.overflow = "hidden";
         }
+        setMenuOpen(!isMenuOpen);
     };
 
     return (
