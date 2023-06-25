@@ -20,12 +20,11 @@ import classNames from "classnames";
 export const MainPage = observer(() => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
     const [worksSwiper, setWorksSwiper] = useState<SwiperClass | null>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
     const { width } = useWindowDimensions();
 
     useEffect(() => {
-        thumbsSwiper?.slideTo(activeIndex);
-    }, [activeIndex, thumbsSwiper]);
+        thumbsSwiper?.slideTo(store.activeCategoryIndex);
+    }, [store.activeCategoryIndex, thumbsSwiper]);
 
     useEffect(() => {
         const updateAutoHeightInterval = setInterval(() => {
@@ -47,12 +46,13 @@ export const MainPage = observer(() => {
                         modules={[FreeMode]}
                         slidesOffsetBefore={20}
                         slidesOffsetAfter={20}
+                        initialSlide={store.activeCategoryIndex}
                     >
                         {store.categories.map((category, index) => (
                             <SwiperSlide key={index} className={styles.navSlide}>
                                 <div
                                     className={classNames(styles.category, {
-                                        [styles.active]: index === activeIndex,
+                                        [styles.active]: index === store.activeCategoryIndex,
                                     })}
                                 >
                                     {category.name}
@@ -67,9 +67,10 @@ export const MainPage = observer(() => {
                         slidesPerView={1}
                         thumbs={{ swiper: thumbsSwiper }}
                         modules={[Thumbs]}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                        onSlideChange={(swiper) => store.setActiveCategoryIndex(swiper.activeIndex)}
                         className={styles.worksSwiper}
                         autoHeight={true}
+                        initialSlide={store.activeCategoryIndex}
                     >
                         {store.categories.map((category, index) => (
                             <SwiperSlide key={index} className={styles.worksSlide}>

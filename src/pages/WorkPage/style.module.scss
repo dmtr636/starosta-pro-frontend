@@ -6,6 +6,10 @@
     @include desktopLg {
         padding: 120px 20px 120px 0;
     }
+
+    @include mobile {
+        padding: 10px 20px 92px 20px;
+    }
 }
 
 .info {
@@ -15,6 +19,10 @@
     @include desktopLg {
         gap: 48px;
     }
+
+    @include mobile {
+        gap: 30px;
+    }
 }
 
 .nameRow {
@@ -23,6 +31,13 @@
     align-items: center;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: start;
+    }
 }
 
 .name {
@@ -32,6 +47,10 @@
 
     @include desktopLg {
         font-size: 30px;
+    }
+
+    @include mobile {
+        font-size: 18px;
     }
 }
 
@@ -43,6 +62,10 @@
 
     @include desktopLg {
         font-size: 24px;
+    }
+
+    @include mobile {
+        font-size: 14px;
     }
 }
 
@@ -62,6 +85,12 @@
         font-size: 24px;
         line-height: 33px;
     }
+
+    @include mobile {
+        columns: 1;
+        font-size: 14px;
+        line-height: initial;
+    }
 }
 
 .imageList {
@@ -72,6 +101,11 @@
     @include desktopLg {
         margin-top: 60px;
         gap: 18px;
+    }
+
+    @include mobile {
+        margin-top: 30px;
+        gap: 16px;
     }
 }
 

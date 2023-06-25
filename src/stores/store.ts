@@ -11,6 +11,7 @@ class Store {
     works: IWork[] = [];
     categories: ICategory[] = [];
     activeCategory: ICategory | null = null;
+    activeCategoryIndex = 0;
     showCookie = JSON.parse(localStorage.getItem("showCookie") ?? "true");
 
     async fetchWorks() {
@@ -31,6 +32,10 @@ class Store {
 
     setActiveCategory(activeCategory: ICategory | null) {
         this.activeCategory = activeCategory;
+    }
+
+    setActiveCategoryIndex(index: number) {
+        this.activeCategoryIndex = index;
     }
 
     getWorkById(id: string) {
