@@ -13,18 +13,32 @@
     padding-left: 230px;
     padding-right: 20px;
     z-index: 10;
+
+    @include mobile {
+        height: 157px;
+        padding: 25px 20px;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+    }
 }
 
 .text {
+    @include textTrim;
     font-weight: 600;
     font-size: 20px;
     line-height: 27px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
+
+    @include mobile {
+        font-size: 16px;
+        line-height: initial;
+    }
 }
 
 .button {
-    padding: 9px 11px;
+    padding: 9px 15px;
     background: #FFFFFF;
     border-radius: 10px;
     font-weight: 700;
