@@ -16,6 +16,7 @@ export const Header = observer(() => {
                 setMenuExiting(false);
             }, 250);
         } else {
+            window.scrollTo({top: 0});
             document.body.style.overflow = "hidden";
         }
         setMenuOpen(!isMenuOpen);
