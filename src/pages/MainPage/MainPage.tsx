@@ -19,6 +19,7 @@ import classNames from "classnames";
 
 export const MainPage = observer(() => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+    const [worksSwiper, setWorksSwiper] = useState<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const { width } = useWindowDimensions();
 
@@ -26,9 +27,12 @@ export const MainPage = observer(() => {
         thumbsSwiper?.slideTo(activeIndex);
     }, [activeIndex, thumbsSwiper]);
 
-    if (!store.categories.length) {
-        return null
-    }
+    useEffect(() => {
+        const updateAutoHeightInterval = setInterval(() => {
+            worksSwiper?.updateAutoHeight();
+        }, 100);
+        return () => clearInterval(updateAutoHeightInterval);
+    }, [worksSwiper]);
 
     return (
         <div className={styles.list}>
@@ -58,6 +62,7 @@ export const MainPage = observer(() => {
                     </Swiper>
 
                     <Swiper
+                        onSwiper={setWorksSwiper}
                         spaceBetween={40}
                         slidesPerView={1}
                         thumbs={{ swiper: thumbsSwiper }}

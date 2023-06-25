@@ -13,7 +13,7 @@
 }
 
 .worksSlide {
-    min-height: 100% !important;
+    min-height: calc(100vh - 120px) !important;
 }
 
 .category {
