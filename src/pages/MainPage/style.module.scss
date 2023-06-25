@@ -1,7 +1,7 @@
 @import "src/styles/vars";
 
 .navSwiper {
-    margin-top: 12px;
+
 }
 
 .navSlide {
@@ -9,7 +9,7 @@
 }
 
 .worksSwiper {
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 .worksSlide {
@@ -21,6 +21,7 @@
     font-weight: 300;
     letter-spacing: 0.4px;
     text-transform: uppercase;
+    padding: 12px 0;
     @include textTrim;
 
     color: rgba(36, 36, 36, 0.40);
