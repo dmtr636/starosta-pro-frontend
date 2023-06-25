@@ -6,18 +6,14 @@
 
 .navSlide {
     width: auto !important;
-
-    &:first-child{
-        padding-left: 20px;
-    }
-
-    &:last-child{
-        padding-right: 20px;
-    }
 }
 
 .worksSwiper {
     margin-top: 20px;
+}
+
+.worksSlide {
+    min-height: 100% !important;
 }
 
 .category {

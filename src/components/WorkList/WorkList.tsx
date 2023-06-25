@@ -15,6 +15,7 @@ export const WorkList = observer((props: {
                 <div
                     className={styles.work}
                     onClick={() => navigate(`/work/${work.id}`)}
+                    key={work.id}
                 >
                     {work.type === "image" ? (
                         <img

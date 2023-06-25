@@ -14,11 +14,19 @@ class Store {
     showCookie = JSON.parse(localStorage.getItem("showCookie") ?? "true");
 
     async fetchWorks() {
-        this.works = await api.fetchWorks();
+        this.setWorks(await api.fetchWorks());
     }
 
     async fetchCategories() {
-        this.categories = await api.fetchCategories();
+        this.setCategories(await api.fetchCategories());
+    }
+
+    setWorks(works: IWork[]) {
+        this.works = works;
+    }
+
+    setCategories(categories: ICategory[]) {
+        this.categories = categories;
     }
 
     setActiveCategory(activeCategory: ICategory | null) {

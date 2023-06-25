@@ -26,8 +26,8 @@ export const MainPage = observer(() => {
         thumbsSwiper?.slideTo(activeIndex);
     }, [activeIndex, thumbsSwiper]);
 
-    if (!store.categories || !store.works) {
-        return <div>Загрузка</div>;
+    if (!store.categories.length) {
+        return null
     }
 
     return (
@@ -38,9 +38,11 @@ export const MainPage = observer(() => {
                         onSwiper={setThumbsSwiper}
                         spaceBetween={12}
                         slidesPerView={"auto"}
-                        centeredSlides={true}
-                        centeredSlidesBounds={true}
                         className={styles.navSwiper}
+                        freeMode={true}
+                        modules={[FreeMode]}
+                        slidesOffsetBefore={20}
+                        slidesOffsetAfter={20}
                     >
                         {store.categories.map((category, index) => (
                             <SwiperSlide key={index} className={styles.navSlide}>
@@ -48,7 +50,6 @@ export const MainPage = observer(() => {
                                     className={classNames(styles.category, {
                                         [styles.active]: index === activeIndex,
                                     })}
-                                    onClick={() => thumbsSwiper?.slideTo(index)}
                                 >
                                     {category.name}
                                 </div>
@@ -57,16 +58,16 @@ export const MainPage = observer(() => {
                     </Swiper>
 
                     <Swiper
-                        loop={false}
                         spaceBetween={40}
                         slidesPerView={1}
                         thumbs={{ swiper: thumbsSwiper }}
                         modules={[Thumbs]}
                         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                         className={styles.worksSwiper}
+                        autoHeight={true}
                     >
                         {store.categories.map((category, index) => (
-                            <SwiperSlide key={index}>
+                            <SwiperSlide key={index} className={styles.worksSlide}>
                                 <WorkList works={store.filterWorksByCategory(category)} />
                             </SwiperSlide>
                         ))}
