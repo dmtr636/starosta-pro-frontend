@@ -43,6 +43,9 @@ class Store {
     }
 
     filterWorksByCategory(category: ICategory) {
+        if (category.id === 0) {
+            return this.works
+        }
         return this.works.filter((w) => w.category_id === category?.id);
     }
 
@@ -56,6 +59,17 @@ class Store {
             return this.filterWorksByCategory(this.activeCategory)
         }
         return this.works;
+    }
+
+    get preparedCategories() {
+        const categoryAll: ICategory = {
+            id: 0,
+            name: "ALL"
+        }
+        return [
+            categoryAll,
+            ...this.categories
+        ]
     }
 }
 

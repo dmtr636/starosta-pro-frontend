@@ -48,7 +48,7 @@ export const MainPage = observer(() => {
                         slidesOffsetAfter={20}
                         initialSlide={store.activeCategoryIndex}
                     >
-                        {store.categories.map((category, index) => (
+                        {store.preparedCategories.map((category, index) => (
                             <SwiperSlide key={index} className={styles.navSlide}>
                                 <div
                                     className={classNames(styles.category, {
@@ -72,7 +72,7 @@ export const MainPage = observer(() => {
                         autoHeight={true}
                         initialSlide={store.activeCategoryIndex}
                     >
-                        {store.categories.map((category, index) => (
+                        {store.preparedCategories.map((category, index) => (
                             <SwiperSlide key={index} className={styles.worksSlide}>
                                 <WorkList works={store.filterWorksByCategory(category)} />
                             </SwiperSlide>
