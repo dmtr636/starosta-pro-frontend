@@ -23,7 +23,7 @@ class Store {
     }
 
     setWorks(works: IWork[]) {
-        this.works = [...works, ...works, ...works, ...works, ...works, ...works];
+        this.works = works;
     }
 
     setCategories(categories: ICategory[]) {
