@@ -90,7 +90,7 @@
 
 .sectionHeader {
     display: grid;
-    grid-template-columns: 400px 610px;
+    grid-template-columns: 420px 1fr;
     justify-content: space-between;
     gap: 20px;
 
@@ -101,10 +101,10 @@
 }
 
 .sectionHeaderName {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     line-height: 127%;
-    letter-spacing: 0.54px;
+    letter-spacing: 0.72px;
 
     @include mobile {
         font-size: 18px;
