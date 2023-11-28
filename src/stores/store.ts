@@ -23,7 +23,7 @@ class Store {
     }
 
     setWorks(works: IWork[]) {
-        this.works = works;
+        this.works = [...works, ...works, ...works, ...works, ...works, ...works];
     }
 
     setCategories(categories: ICategory[]) {
@@ -64,7 +64,7 @@ class Store {
     get preparedCategories() {
         const categoryAll: ICategory = {
             id: 0,
-            name: "ALL"
+            name: "ВСЕ"
         }
         return [
             categoryAll,

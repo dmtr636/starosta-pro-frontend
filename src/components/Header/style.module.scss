@@ -9,10 +9,10 @@
 }
 
 .name {
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.28px;
-    @include textTrim;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 110%;
+    letter-spacing: 0.32px;
 }
 
 .overlay {
@@ -85,8 +85,6 @@
 }
 
 .specialty {
-    @include textTrim;
-
     color: $color-black-hover;
     font-weight: 300;
 }
@@ -95,13 +93,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 16px;
+    gap: 8px;
     margin-top: auto;
 }
 
 .link {
-    @include textTrim;
-
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 0.4px;

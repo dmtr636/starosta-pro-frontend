@@ -1,14 +1,10 @@
 @import "src/styles/vars";
 
 .layout {
-    padding: 80px 20px 80px 0;
-
-    @include desktopLg {
-        padding: 120px 20px 120px 0;
-    }
+    padding: 72px 20px 80px 0;
 
     @include mobile {
-        padding: 10px 20px 96px 20px;
+        padding: 8px 20px 96px 20px;
     }
 }
 
@@ -16,53 +12,33 @@
     display: grid;
     gap: 32px;
 
-    @include desktopLg {
-        gap: 48px;
-    }
-
     @include mobile {
         gap: 30px;
     }
 }
 
-.nameRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    letter-spacing: 0.03em;
+.name {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.96px;
     text-transform: uppercase;
 
     @include mobile {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        align-items: start;
-    }
-}
-
-.name {
-    @include textTrim;
-    font-weight: 600;
-    font-size: 20px;
-
-    @include desktopLg {
-        font-size: 30px;
-    }
-
-    @include mobile {
-        font-size: 18px;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
     }
 }
 
 .type {
-    @include textTrim;
     font-weight: 500;
     font-size: 16px;
     opacity: 0.7;
-
-    @include desktopLg {
-        font-size: 24px;
-    }
 
     @include mobile {
         font-size: 14px;
@@ -70,7 +46,6 @@
 }
 
 .description {
-    @include textTrim;
     max-height: 166px;
     columns: 2 20px;
     column-fill: auto;
@@ -79,12 +54,6 @@
     line-height: 22px;
     letter-spacing: 0.03em;
     opacity: 0.5;
-
-    @include desktopLg {
-        max-height: 255px;
-        font-size: 24px;
-        line-height: 33px;
-    }
 
     @include mobile {
         columns: 1;
@@ -95,22 +64,66 @@
 }
 
 .imageList {
-    margin-top: 40px;
+    margin-top: 65px;
     display: grid;
-    gap: 12px;
-
-    @include desktopLg {
-        margin-top: 60px;
-        gap: 18px;
-    }
+    gap: 60px;
 
     @include mobile {
-        margin-top: 30px;
-        gap: 16px;
+        margin-top: 28px;
+        gap: 24px;
     }
 }
 
 .image {
     width: 100%;
     object-fit: cover;
+}
+
+.section {
+    display: grid;
+    gap: 60px;
+
+    @include mobile {
+        gap: 24px;
+    }
+}
+
+.sectionHeader {
+    display: grid;
+    grid-template-columns: 400px 610px;
+    justify-content: space-between;
+    gap: 20px;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.sectionHeaderName {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 127%;
+    letter-spacing: 0.54px;
+
+    @include mobile {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 127%;
+        letter-spacing: 0.54px;
+    }
+}
+
+.sectionHeaderText {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.54px;
+
+    @include mobile {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.48px;
+    }
 }

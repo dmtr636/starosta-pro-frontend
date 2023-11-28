@@ -14,24 +14,21 @@ export const Sidebar = observer(() => {
             })}
             onClick={() => store.setActiveCategory(category)}
         >
-            {category?.name ?? "ALL"}
+            {category?.name ?? "ВСЕ"}
         </NavLink>
     );
 
     return (
         <div className={styles.sidebar}>
             <div className={styles.header}>
-                <div className={styles.name}>STAROSTA</div>
-                <div className={styles.specialties}>
-                    <div className={styles.specialty}>PRODUCT DESIGNER</div>
-                </div>
+                <div className={styles.name}>СТАРОСТА К.</div>
             </div>
             <div className={styles.links}>
-                <a href="https://www.linkedin.com/in/starosta-kirill" target="_blank" className={styles.link}>
-                    LINKEDIN
+                <a href="https://t.me/starostakirill" target="_blank" className={styles.link}>
+                    ТЕЛЕГРАМ
                 </a>
                 <a href="mailto:starosta-2000@mail.ru" target="_blank" className={styles.link}>
-                    EMAIL
+                    ПОЧТА
                 </a>
             </div>
             {store.categories.length > 0 && (

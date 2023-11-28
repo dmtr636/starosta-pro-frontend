@@ -24,7 +24,7 @@ export const Header = observer(() => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.name}>STAROSTA</div>
+            <div className={styles.name}>СТАРОСТА К.</div>
             <button onClick={toggleMenu}>
                 <Burger open={isMenuOpen} />
             </button>
@@ -40,21 +40,12 @@ export const Header = observer(() => {
                         className={classNames(styles.menu, { [styles.menuExiting]: isMenuExiting })}
                         onClick={(event) => event.stopPropagation()}
                     >
-                        <div className={styles.specialty}>PRODUCT DESIGNER</div>
                         <div className={styles.links}>
-                            <a
-                                href="https://www.linkedin.com/in/starosta-kirill"
-                                target="_blank"
-                                className={styles.link}
-                            >
-                                LINKEDIN
+                            <a href="https://t.me/starostakirill" target="_blank" className={styles.link}>
+                                ТЕЛЕГРАМ
                             </a>
-                            <a
-                                href="mailto:starosta-2000@mail.ru"
-                                target="_blank"
-                                className={styles.link}
-                            >
-                                EMAIL
+                            <a href="mailto:starosta-2000@mail.ru" target="_blank" className={styles.link}>
+                                ПОЧТА
                             </a>
                         </div>
                     </div>

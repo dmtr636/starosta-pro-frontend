@@ -17,11 +17,6 @@
 
     z-index: 10;
 
-    @include desktopLg {
-        width: 84px;
-        height: 84px;
-    }
-
     &:hover {
         background: white;
         box-shadow: 0px 0px 4px rgba(40, 40, 40, 0.14);
@@ -34,10 +29,5 @@
     svg {
         width: 24px;
         height: 24px;
-
-        @include desktopLg {
-            width: 36px;
-            height: 36px;
-        }
     }
 }

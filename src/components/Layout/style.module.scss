@@ -2,13 +2,9 @@
 
 .layout {
     display: grid;
-    grid-template-columns: 230px auto;
+    grid-template-columns: 210px auto;
     max-width: 1920px;
     margin: 0 auto;
-
-    @include desktopLg {
-        grid-template-columns: 340px auto;
-    }
 
     @include mobile {
         display: block;

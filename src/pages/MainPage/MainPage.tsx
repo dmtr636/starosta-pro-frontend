@@ -39,7 +39,7 @@ export const MainPage = observer(() => {
                 <>
                     <Swiper
                         onSwiper={setThumbsSwiper}
-                        spaceBetween={12}
+                        spaceBetween={16}
                         slidesPerView={"auto"}
                         className={styles.navSwiper}
                         freeMode={true}

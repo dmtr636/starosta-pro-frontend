@@ -3,6 +3,8 @@ export interface IImage {
     image: string,
     image_width: number,
     type: "image" | "video",
+    name: string | null,
+    text: string,
 }
 
 export interface IWork {
