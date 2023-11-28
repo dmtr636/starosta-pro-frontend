@@ -20,6 +20,11 @@
 
 .name {
     font-weight: 800;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-black-hover;
+    }
 }
 
 .specialties {

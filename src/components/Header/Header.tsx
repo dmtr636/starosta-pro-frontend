@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import Burger from "@/components/Burger/Burger.tsx";
 import { useState } from "react";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export const Header = observer(() => {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ export const Header = observer(() => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.name}>СТАРОСТА К.</div>
+            <Link to={"/"} className={styles.name}>СТАРОСТА К.</Link>
             <button onClick={toggleMenu}>
                 <Burger open={isMenuOpen} />
             </button>

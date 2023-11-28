@@ -1,7 +1,7 @@
 import styles from "./style.module.scss";
 import { store } from "@/stores/store.ts";
 import classNames from "classnames";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ICategory } from "@/interfaces/ICategory.ts";
 import {observer} from "mobx-react-lite";
 
@@ -21,7 +21,7 @@ export const Sidebar = observer(() => {
     return (
         <div className={styles.sidebar}>
             <div className={styles.header}>
-                <div className={styles.name}>СТАРОСТА К.</div>
+                <Link to={"/"} className={styles.name}>СТАРОСТА К.</Link>
             </div>
             <div className={styles.links}>
                 <a href="https://t.me/starostakirill" target="_blank" className={styles.link}>
